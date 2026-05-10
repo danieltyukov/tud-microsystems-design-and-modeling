@@ -1,0 +1,20 @@
+Circuit: * Z:\home\danieltyukov\workspace\tud\tud-microsystems-design-and-modeling\unit1-cross-domain-modeling\mehcanical_system.asc
+
+.OP point found by inspection.
+
+Date: Sun May 10 23:07:02 2026
+Total elapsed time: 0.124 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 2270
+traniter = 2270
+tranpoints = 1136
+accept = 1129
+rejected = 7
+matrix size = 7
+fillins = 0
+solver = Normal
+Matrix Compiler1: 348 bytes object code size  0.2/0.2/[0.2]
+Matrix Compiler2: off
