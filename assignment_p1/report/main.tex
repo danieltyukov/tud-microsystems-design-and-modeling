@@ -1,0 +1,161 @@
+\documentclass[11pt,a4paper]{article}
+
+% ----- Page layout -----
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+
+% ----- Math -----
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{siunitx}
+  \sisetup{per-mode=symbol, separate-uncertainty=true}
+
+% ----- Graphics & figures -----
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+\usepackage{subcaption}
+
+% ----- TikZ / CircuiTikZ -----
+\usepackage{tikz}
+\usepackage{circuitikz}
+\usetikzlibrary{calc,arrows.meta,positioning,decorations.pathmorphing}
+
+% ----- Tables -----
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+
+% ----- Headers, hyperlinks, colors -----
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black,
+  citecolor=blue!60!black
+}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small ET4260 -- Microsystems Design and Modelling}
+\fancyhead[R]{\small Final assignment, Part 1/3}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ----- Custom commands -----
+\newcommand{\Vd}{V_{d}}
+\newcommand{\VDC}{V_{\mathrm{DC}}}
+\newcommand{\VAC}{V_{\mathrm{AC}}}
+\newcommand{\xm}{x_{m}}
+\newcommand{\Fe}{F_{e}}
+\newcommand{\Fd}{F_{d}}
+\newcommand{\geff}{g_{\mathrm{eff}}}
+\newcommand{\neff}{n_{\mathrm{eff}}}
+
+% ----- Title block -----
+\title{\vspace{-1.5cm}
+  \textbf{Final assignment -- Part 1/3} \\[2pt]
+  \large Microsystems Design and Modelling (ET4260)}
+\author{Daniel Tyukov \\ Student number: 5714699}
+\date{First submission: 13\textsuperscript{th} May 2026}
+
+\begin{document}
+
+% ===================== Title page =====================
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+{\large\textbf{DELFT UNIVERSITY OF TECHNOLOGY}}\\[2pt]
+{\small Faculty of Electrical Engineering, Mathematics and Computer Science}\\[2cm]
+\includegraphics[width=0.25\textwidth]{figures/tudelft_logo.jpeg}\\[2cm]
+{\Large\textbf{Final assignment}}\\[6pt]
+{\Large\textbf{Microsystems Design and Modelling (ET4260)}}\\[6pt]
+{\Large\textbf{Part 1/3}}\\[1.5cm]
+
+\begin{minipage}{0.85\textwidth}
+\centering\small
+\textbf{Instructions.} Document your calculations properly with derivations and screenshots when needed.
+Latex-generated PDF files are accepted.\\[6pt]
+Deadline for first submission of Part 1: 13\textsuperscript{th} May 2026.\\
+Deadline for final report submission: 24\textsuperscript{th} June 2026.\\
+Corrections made after the first submission are marked in \textcolor{blue}{blue}.
+\end{minipage}
+\vfill
+\rule{0.7\textwidth}{0.4pt}\\[4pt]
+{\large Daniel Tyukov}\\[2pt]
+{\large Student number: 5714699}\\[4pt]
+\rule{0.7\textwidth}{0.4pt}
+\vspace{1cm}
+\end{titlepage}
+
+% ===================== Device introduction =====================
+\section*{Optical phase shifter for quantum applications}
+\addcontentsline{toc}{section}{Device overview}
+
+The MEMS photonic phase shifter studied in this report (Fig.~\ref{fig:schematic}) modulates the
+optical phase by changing the gap $g$ between a suspended silicon mass and an
+adjacent waveguide. The mass is suspended by four fixed--guided beams and
+displaced by a comb-drive actuator biased with $\Vd$. With the gap varying as
+$g=g_{0}+\xm$, the additional phase shift is
+\begin{equation}
+  \Delta\phi(g) = \frac{2\pi L}{\lambda}\,\bigl(\neff(g_{0}) - \neff(g)\bigr),
+  \qquad
+  \neff(g) = (\eta_{\mathrm{eff},0}-\eta_{\mathrm{eff},\infty})\,e^{-bg} + \eta_{\mathrm{eff},\infty}.
+  \label{eq:phase}
+\end{equation}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.78\textwidth]{figures/schematic.png}
+\caption{Schematic of the MEMS optical phase shifter (top view, not to scale).
+The waveguide sits a gap $g_{0}$ above the modulation section.
+The central mass is suspended by four fixed--guided beams of length $L_{b}$
+and width $W_{b}$, anchored on either side. The comb drive at the bottom
+generates the actuating force $\Fe$.}
+\label{fig:schematic}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Design parameters used throughout this report.}
+\label{tab:params}
+\begin{tabularx}{0.85\textwidth}{l l X}
+\toprule
+\textbf{Symbol} & \textbf{Value} & \textbf{Description}\\
+\midrule
+$L$        & \SI{100}{\micro\meter}  & length of modulation section\\
+$g_{0}$    & \SI{200}{\nano\meter}   & modulation gap at rest\\
+$L_{b}$    & \SI{75}{\micro\meter}   & beam length\\
+$W_{b}$    & \SI{5}{\micro\meter}    & beam width\\
+$L_{m}$    & \SI{40}{\micro\meter}   & mass central section length\\
+$W_{m}$    & \SI{30}{\micro\meter}   & mass section width\\
+$h$        & \SI{1}{\micro\meter}    & comb-drive gap\\
+$d_{0}$    & \SI{19}{\micro\meter}   & comb overlap at rest\\
+$L_{c}$    & \SI{20}{\micro\meter}   & comb-finger length\\
+$W_{c}$    & \SI{1}{\micro\meter}    & comb-finger width\\
+$t$        & \SI{200}{\nano\meter}   & thickness of suspended layer\\
+$N$        & 40                      & number of comb-drive gaps\\
+$E_{Si}$   & \SI{170}{\giga\pascal}  & Young's modulus of silicon\\
+$\rho_{Si}$& \SI{2330}{\kilo\gram\per\cubic\meter} & density of silicon\\
+$\lambda$  & \SI{1550}{\nano\meter}  & optical wavelength\\
+$b$        & \SI{0.3}{\per\micro\meter} & refractive-index decay constant\\
+$\eta_{\mathrm{eff},0}$    & 2.6 & $\neff$ at $g=0$\\
+$\eta_{\mathrm{eff},\infty}$ & 2.4 & $\neff$ as $g\to\infty$\\
+$c_{\mathrm{air}}$ & \SI{16.15}{\newton\second\per\meter\cubed} & air damping coefficient\\
+$Q_{\mathrm{clamping}}$ & 500 & clamping quality factor\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\input{sections/q1_q3_mech.tex}
+\input{sections/q4_q5_damping.tex}
+\input{sections/q6_q7_electrostatic.tex}
+\input{sections/q8_modulation.tex}
+\input{sections/q9_scaling.tex}
+
+\end{document}

@@ -1,0 +1,59 @@
+\section{Geometric scaling}
+
+\subsection*{Q9 -- All dimensions multiplied by 1000}
+
+Let every linear dimension grow by $\alpha=10^{3}$. Each derived quantity
+picks up the corresponding power of $\alpha$ from its formula. Results are
+collected in Table~\ref{tab:scaling}; the reasoning follows.
+
+\begin{table}[H]
+\centering
+\small
+\caption{Scaling of device characteristics for $\alpha=10^{3}$.}
+\label{tab:scaling}
+\begin{tabular}{l c c}
+\toprule
+\textbf{Quantity} & \textbf{Power of $\alpha$} & \textbf{Scale factor} \\
+\midrule
+Stiffness $k$              & $\alpha^{1}$  & $10^{3}$ \\
+Effective mass $m$         & $\alpha^{3}$  & $10^{9}$ \\
+Resonance $\omega_{0}=\sqrt{k/m}$ & $\alpha^{-1}$ & $10^{-3}$ \\
+Gravity displacement $x_{g}=mg/k$ & $\alpha^{2}$  & $10^{6}$ \\
+Max AC accel.\ $A_{\max,\mathrm{res}} = g_{0}\omega_{0}^{2}/Q$ & $\alpha^{-1}$ & $10^{-3}$ \\
+Comb coupling $\eta = \VDC \, N\varepsilon_{0}\,t/h$ & $\alpha^{0}$ & $1$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\paragraph{Stiffness ($\propto \alpha$).}
+$k = 4\,E_{Si}\,t\,W_{b}^{3}/L_{b}^{3}$ contains four lengths in the
+numerator ($t,W_{b}^{3}$) and three in the denominator ($L_{b}^{3}$), so
+$k \propto \alpha^{4-3} = \alpha$.
+
+\paragraph{Mass ($\propto \alpha^{3}$).} $m = \rho\cdot V_{\mathrm{moving}}$ and
+volume scales as $\alpha^{3}$.
+
+\paragraph{Resonance ($\propto \alpha^{-1}$).}
+$\omega_{0} = \sqrt{k/m} \propto \sqrt{\alpha/\alpha^{3}} = \alpha^{-1}$.
+The macroscale device would resonate at $\sim \SI{660}{\hertz}$ instead of
+$\SI{660}{\kilo\hertz}$.
+
+\paragraph{Gravity displacement ($\propto \alpha^{2}$).}
+$x_{g} = m g / k \propto \alpha^{3}/\alpha = \alpha^{2}$.
+The $\SI{0.57}{\pico\meter}$ deflection becomes $\sim\!\SI{0.6}{\milli\meter}$.
+Gravity, irrelevant here, becomes a dominant load at the macroscale.
+
+\paragraph{Max AC acceleration ($\propto \alpha^{-1}$).}
+$A_{\max,\mathrm{res}} = g_{0}\omega_{0}^{2}/Q \propto \alpha\cdot\alpha^{-2}
+= \alpha^{-1}$ (assuming $Q$ unchanged). Shock tolerance drops from
+$\sim\!3600\,g$ to a few $g$.
+
+\paragraph{Coupling constant ($\alpha^{0}$).}
+$\eta = \VDC\,N\,\varepsilon_{0}\,t/h$. With $N$ fixed and $t,h$ scaling
+together, $t/h$ is invariant and $\eta$ stays the same at a given $\VDC$.
+
+\bigskip
+\noindent
+The pattern is the usual one for MEMS: shrinking the device makes it stiffer
+relative to its mass (faster), shock-tolerant, and immune to gravity. Going
+in the opposite direction undoes all three.

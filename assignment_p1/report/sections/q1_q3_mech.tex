@@ -1,0 +1,79 @@
+\section{Mechanical model and dynamics}
+
+\subsection*{Q1 -- Lumped-element equation of motion}
+
+In vacuum and without damping, the suspended mass behaves as a single
+spring--mass with input force $\Fe$ and output displacement $\xm$:
+\begin{equation}
+  m\,\ddot{\xm} + k\,\xm \;=\; \Fe.
+  \label{eq:eom-undamped}
+\end{equation}
+Once air damping and clamping losses are included (Q4) the equation extends to
+\begin{equation}
+  m\,\ddot{\xm} + b\,\dot{\xm} + k\,\xm \;=\; \Fe,
+  \label{eq:eom-damped}
+\end{equation}
+which is the classical mass--spring--damper system, equivalent to a series RLC
+circuit (Fig.~\ref{fig:rlc}).
+
+\begin{figure}[H]
+\centering
+\begin{circuitikz}[scale=0.95,transform shape]
+  \draw (0,0)
+    to[V,l=$\Fe$,invert] (0,3)
+    to[L,l=$L\equiv m$] (3,3)
+    to[R,l=$R\equiv b$] (6,3)
+    to[C,l=$C\equiv 1/k$] (9,3)
+    to[short] (9,0)
+    to[short] (0,0);
+\end{circuitikz}
+\caption{Series-RLC equivalent circuit of the lumped mass--spring--damper
+system. Effort $\leftrightarrow$ voltage, flow $\leftrightarrow$ current.}
+\label{fig:rlc}
+\end{figure}
+
+\subsection*{Q2 -- Fundamental resonance frequency}
+
+\paragraph{Stiffness.}
+Each of the four beams is clamped at its anchor and connected to the rigid
+mass at the other end. By the symmetry of the upper/lower beam pair, the
+mass-side end translates without rotation -- a \emph{fixed--guided} boundary
+condition. Each beam therefore contributes
+\begin{equation}
+  k_{b} \;=\; \frac{12\,E_{Si}\,I}{L_{b}^{3}},
+  \qquad
+  I \;=\; \frac{t\,W_{b}^{3}}{12},
+\end{equation}
+where the in-plane width $W_{b}$ is the dimension along the bending
+direction. With four beams in parallel,
+\begin{equation}
+  k \;=\; 4 k_{b} \;=\; \frac{4\,E_{Si}\,t\,W_{b}^{3}}{L_{b}^{3}}
+        \;=\; \SI{40.30}{\newton\per\meter}.
+\end{equation}
+
+\paragraph{Effective mass.}
+Neglecting beam mass, the moving body comprises the modulation strip, the
+central mass and the comb fingers:
+\begin{equation}
+  m \;=\; \rho_{Si}\,t\bigl(\,L\,W_{m} + L_{m}\,W_{m} + N\,L_{c}\,W_{c}\bigr)
+        \;=\; \SI{2.33e-12}{\kilo\gram}.
+\end{equation}
+
+\paragraph{Resonance.}
+\begin{equation}
+  \omega_{0}=\sqrt{\frac{k}{m}}=\SI{4.16e6}{\radian\per\second},
+  \qquad
+  f_{0}=\frac{\omega_{0}}{2\pi}\approx \SI{662}{\kilo\hertz}.
+\end{equation}
+
+\subsection*{Q3 -- Static deflection due to gravity}
+
+With gravity acting along the direction of motion, static balance gives
+\begin{equation}
+  x_{g}=\frac{m\,g}{k}
+       =\frac{\SI{2.33e-12}{\kilo\gram}\cdot\SI{9.81}{\meter\per\second\squared}}
+              {\SI{40.30}{\newton\per\meter}}
+       \approx \SI{0.57}{\pico\meter}.
+\end{equation}
+This is six orders of magnitude smaller than $g_{0}$. Gravity is irrelevant
+at this scale; the comb-drive force dominates by a wide margin.
