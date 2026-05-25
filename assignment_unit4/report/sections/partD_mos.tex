@@ -1,0 +1,101 @@
+\section*{Part D: IS-MOS Capacitance}
+\addcontentsline{toc}{section}{Part D: IS-MOS Capacitance}
+
+\paragraph{Task 4 a) Labelling and characteristic parameters.}
+The curve is a low-frequency MOS C--V on a \textbf{$p$-type substrate}: at negative $V_G$ holes
+accumulate ($C=C'_{\max}=C_{ox}$), the capacitance dips through depletion to $C'_{\min}$, and at
+positive $V_G$ the low-frequency minority response brings it back up. The three red parameters are
+the accumulation plateau $C'_{\max}$, the flat-band value $C'_{FB}$ (the marked point), and the
+inversion minimum $C'_{\min}$; the axes are $V_G$ (horizontal) and $C'$ (vertical), see
+Fig.~\ref{fig:cv-annot}.
+
+\begin{figure}[H]
+\centering
+\input{figures/q4a_fig.tex}
+\caption{Assignment Figure~3 with the gaps filled in: $p$-type substrate, $y$-axis $C'$ and $x$-axis
+$V_G$, the flat-band voltage $V_{FB}$, and the three red parameters $C'_{\max}=C_{ox}$, $C'_{FB}$ and
+$C'_{\min}$.}
+\label{fig:cv-annot}
+\end{figure}
+
+\textbf{(i) Values at \SI{300}{\kelvin}} (SiO$_2$, $\epsilon_r=3.9$, $t_{ox}=\SI{30}{\nm}$;
+Si, $\epsilon_r=11.7$, $N=\SI{3e16}{\per\cubic\cm}$). All values per unit area:
+\[
+C'_{ox}=\frac{\epsilon_{ox}}{t_{ox}}=\SI{1.15e-3}{\farad\per\square\meter}\;(\SI{115}{\nano\farad\per\square\cm}).
+\]
+The bulk potential is $\phi_F=\tfrac{k_BT}{e}\ln\!\tfrac{N}{n_i}=\SI{0.375}{\volt}$, giving a maximum
+depletion width
+$W_{\max}=\sqrt{4\epsilon_{Si}\phi_F/(eN)}=\SI{180}{\nm}$ and Debye length
+$L_D=\sqrt{\epsilon_{Si}(k_BT/e)/(eN)}=\SI{23.6}{\nm}$. With
+$C'_{\min}=C_{ox}C_{sc}/(C_{ox}+C_{sc})$ for each series semiconductor capacitance:
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+Gate / doping & $C'_{\max}=C_{ox}$ & $C'_{FB}$ & $C'_{\min}$ \\
+ & [nF/cm$^2$] & [nF/cm$^2$] & [nF/cm$^2$] \\
+\midrule
+SiO$_2$, $N=3{\times}10^{16}$ & 115 & 91 & 38.4 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{(ii) Si$_3$N$_4$ gate ($\epsilon_r=7.5$) and lower doping $N=\SI{0.5e16}{\per\cubic\cm}$.}
+The higher-$\kappa$ oxide nearly doubles $C_{ox}$, and the lighter doping widens the depletion region
+($W_{\max}=\SI{413}{\nm}$), lowering $C'_{\min}$:
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+Gate / doping & $C'_{\max}$ & $C'_{FB}$ & $C'_{\min}$ \\
+ & [nF/cm$^2$] & [nF/cm$^2$] & [nF/cm$^2$] \\
+\midrule
+Si$_3$N$_4$, $N=0.5{\times}10^{16}$ & 221 & 99 & 22.6 \\
+\bottomrule
+\end{tabular}
+\end{center}
+The capacitance swing grows from $C_{\max}-C_{\min}=\SI{77}{\nano\farad\per\square\cm}$ to
+\SI{199}{\nano\farad\per\square\cm}, a factor of $2.6$. With $\Delta V$ fixed, the slope
+$\Delta C/\Delta V$ therefore rises by the same factor, so the change makes a
+\textbf{more sensitive sensor}.
+
+\paragraph{Task 4 b) C--V modifications (low frequency).}
+The flat-band voltage is
+$V_{FB}=\tfrac{\phi_M}{e}-\tfrac{\phi_{Si}}{e}-\tfrac{Q_{ox}+Q_{ss}}{C_{ox}}$ (EOS adds
+$E_{REF}-\psi_0+\chi_{sol}$). Each effect shifts the curve horizontally without changing its shape
+(Fig.~\ref{fig:cv-mods}):
+\begin{itemize}[nosep,leftmargin=1.4em]
+\item \textbf{(i)} Fixed positive $Q_{ox},Q_{ss}$ lower $V_{FB}$ $\Rightarrow$ shift to the
+\textbf{left} (negative $V$).
+\item \textbf{(ii)} A higher semiconductor work function $\phi_{Si}$ also lowers $V_{FB}$
+$\Rightarrow$ shift \textbf{left}.
+\item \textbf{(iii)} Increasing pH makes $\psi_0$ more negative, and since $V_{FB}$ contains
+$-\psi_0$ the curve shifts to the \textbf{right} ($\le\SI{59}{\milli\volt}/\mathrm{pH}$).
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+\input{figures/q4b_fig.tex}
+\caption{Sketched over assignment Figure~4 (blue = ideal). \textcolor{red}{(i) red, dashed}: positive
+fixed charge shifts left; \textcolor{green!55!black}{(ii) green, dash-dot}: higher work function
+shifts left; \textcolor{violet}{(iii) violet, dotted}: increased pH shifts right.}
+\label{fig:cv-mods}
+\end{figure}
+
+\paragraph{Task 4 c) EOS-Cap pH sensitivity.}
+In the linear regime the chemical sensitivity is the product of the (shared) electrical slope and the
+voltage shift per pH, $\Delta C/\Delta\mathrm{pH}=(\Delta C/\Delta V)\,(\Delta V/\Delta\mathrm{pH})$,
+with the Nernst limit $\Delta V/\Delta\mathrm{pH}=2.303\tfrac{k_BT}{e}\,\alpha=\SI{59.5}{\milli\volt}\,\alpha$:
+\[
+\text{A (SiO}_2,\ \alpha=0.5):\ \frac{\Delta V}{\Delta\mathrm{pH}}=\SI{29.8}{\milli\volt}/\mathrm{pH},\qquad
+\text{B (Al}_2\text{O}_3,\ \alpha=0.9):\ \frac{\Delta V}{\Delta\mathrm{pH}}=\SI{53.6}{\milli\volt}/\mathrm{pH}.
+\]
+Because both devices share the same slope $\Delta C/\Delta V$, their capacitive sensitivities scale
+the same way: $\boxed{\,(\Delta C/\Delta\mathrm{pH})_B/(\Delta C/\Delta\mathrm{pH})_A=\alpha_B/\alpha_A=1.8\,}$.
+The near-Nernstian Al$_2$O$_3$ device is $1.8\times$ more sensitive than the sub-Nernstian SiO$_2$ one.
+
+\paragraph{Task 4 d) Effect of a different semiconductor.}
+The pH response lives at the \emph{oxide--electrolyte} interface (it is set by $\psi_0$ and the
+site-dissociation chemistry), so the intrinsic sensitivity in mV/pH does \textbf{not} change with the
+semiconductor. What does change is the baseline: a different work function $\phi_{Si}$, bandgap, $n_i$
+and permittivity shift $V_{FB}$ and reshape the C--V curve (different $C_{\min}$, depletion width) and
+alter temperature stability and leakage. In short, the curve moves and rescales, but the pH
+slope stays the same.

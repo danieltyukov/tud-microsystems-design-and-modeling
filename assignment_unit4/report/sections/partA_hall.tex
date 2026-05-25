@@ -1,0 +1,91 @@
+\section*{Part A: Hall Sensors}
+\addcontentsline{toc}{section}{Part A: Hall Sensors}
+
+\paragraph{Task 1 a) Best intrinsic semiconductor.}
+The current-related sensitivity of a Hall plate is $S_I = rG/(n\,q\,t)$ and the voltage-related
+sensitivity is $S_V = \mu\,rG/\LWeff$. For an intrinsic material $n=n_i$, so a good Hall sensor
+wants a \emph{low} intrinsic carrier concentration and a \emph{high} mobility. Reading Table~1:
+
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+ & Si & GaAs & Ge \\
+\midrule
+$n_i$ [\si{\per\cubic\cm}] & $1.5\times10^{10}$ & $\bm{1.8\times10^{6}}$ & $2.4\times10^{13}$ \\
+$\mu_n$ [\si{\square\cm\per\volt\per\second}] & 1350 & \textbf{8500} & 3900 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+GaAs wins on \emph{both} counts: its intrinsic concentration is four orders of magnitude below Si
+(boosting $S_I\propto 1/n_i$) and its electron mobility is the highest of the three (boosting
+$S_V\propto\mu$). Its wide bandgap (\SI{1.42}{eV}) also keeps thermally generated carriers low, so
+the response stays stable with temperature. \textbf{GaAs is the most suitable.}
+
+\paragraph{Task 1 b) Parameter linking $S_I$ and $S_V$.}
+Since $V=I\!\cdot\!R$, the two sensitivities are tied through the \textbf{device resistance $R$}:
+\[
+S_V=\frac{S}{V}=\frac{S}{I R}=\frac{S_I}{R},\qquad R=R_\square\LWeff .
+\]
+$R$ matters in its own right because it fixes the bias power $P=V^2/R=I^2R$ (hence self-heating) and
+the thermal-noise floor $\overline{u_n^2}=4k_BTR\,\Delta f$. Designing only for sensitivity while
+ignoring $R$ can push the device into excessive power dissipation or poor SNR.
+
+\paragraph{Task 1 c) Figure of merit for integrated devices.}
+An integrated Hall device runs from a fixed supply \emph{voltage} and a limited power budget, so the
+\textbf{voltage-related sensitivity $S_V$} (\si{\volt\per\volt\per\tesla}) is the meaningful figure of
+merit, since it is the sensitivity per unit bias and ultimately sets the achievable SNR-per-power,
+$\mathrm{SNR}_P\propto \mu\,rG/\LWeff$.
+
+\paragraph{Task 1 d) GaN Hall devices.}
+For the Gen~2 device $S_I=\SI{90}{\volt\per\ampere\per\tesla}$, $S_V=\SI{57}{\milli\volt\per\volt\per\tesla}$,
+$R_\square=\SI{430}{\ohm}/\square$, with $r=1$.
+
+\textbf{(i)} From $S_V=S_I/\big(R_\square\LWeff\big)$,
+\[
+\LWeff=\frac{S_I}{S_V\,R_\square}=\frac{90}{0.057\times430}=\mathbf{3.67}.
+\]
+The geometry factor follows from
+\[
+G\approx\frac{\LWeff^{2}}{\sqrt{\LWeff^{4}+\tfrac12\LWeff^{2}+4}}
+=\frac{3.67^{2}}{\sqrt{3.67^{4}+\tfrac12\,3.67^{2}+4}}=\mathbf{0.97}.
+\]
+($G$ is close to unity, as expected for the relatively large $L/W$ of a cross/Greek-cross plate.)
+
+\textbf{(ii)} Gen~3 shares Gen~2's geometry, so $\LWeff=3.67$ and $G=0.97$ carry over. With
+$S_I=34$, $S_V=\SI{34}{\milli\volt\per\volt\per\tesla}$,
+\[
+R_{\square,\mathrm{Gen3}}=\frac{S_I}{S_V\LWeff}=\frac{34}{0.034\times3.67}=\mathbf{272\ \si{\ohm}/\square}.
+\]
+
+\textbf{(iii)} Sheet carrier density from $S_I=rG/(n_s q)$ and mobility from $S_V=\mu rG/\LWeff$:
+\[
+n_s=\frac{rG}{S_I\,q},\qquad \mu=\frac{S_V\LWeff}{rG}.
+\]
+
+\begin{center}\small
+\begin{tabular}{lccc}
+\toprule
+ & $n_s=n\!\cdot\!t$ [\si{\per\square\cm}] & $\mu$ [\si{\square\cm\per\volt\per\second}] & cross-check $\mu=1/(R_\square q n_s)$ \\
+\midrule
+Gen~2 & $6.74\times10^{12}$ & $2154$ & \SI{2154}{} \checkmark\\
+Gen~3 & $1.78\times10^{13}$ & $1285$ & \SI{1285}{} \checkmark\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Gen~3's InAlN barrier gives a roughly $2.6\times$ higher 2DEG density but a lower mobility, the
+usual density/mobility trade-off in nitride heterostructures.
+
+\textbf{(iv) Additional: silicon comparison} ($\LWeff=\sqrt2$, so
+$G=2/\sqrt{4+1+4}=2/3=0.67$; $S_I=300$, $S_V=\SI{60}{\milli\volt\per\volt\per\tesla}$):
+\[
+R_{\square,\mathrm{Si}}=\frac{300}{0.060\sqrt2}=\mathbf{3536\ \si{\ohm}/\square},\qquad
+n_s=\frac{0.67}{300\,q}=1.39\times10^{12}\,\si{\per\square\cm},
+\]
+\[
+\mu_{\mathrm{Si}}=\frac{0.060\sqrt2}{0.67}=\mathbf{1273\ \si{\square\cm\per\volt\per\second}}.
+\]
+The Si plate has $\sim$\,8$\times$ the sheet resistance of GaN Gen~2 and only $\sim$\,60\% of its
+mobility. GaN therefore delivers both a lower $R_\square$ (more current at fixed power) and a higher
+mobility, which is exactly why it makes the better integrated Hall material.

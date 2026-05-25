@@ -1,0 +1,72 @@
+\section*{Part C: Photodetectors}
+\addcontentsline{toc}{section}{Part C: Photodetectors}
+
+\paragraph{Task 2 a) Absorption, thickness and quantum efficiency.}
+\textbf{(i)} Beer--Lambert absorption is $1-e^{-\alpha d}$, so $d=\ln\!\big(\tfrac{1}{1-A}\big)/\alpha$
+with $A=0.90$ ($\alpha d=\ln10=2.303$) or $A=0.99$ ($\alpha d=\ln100=4.605$):
+
+\begin{center}\small
+\begin{tabular}{lcc}
+\toprule
+& $d_{90\%}$ & $d_{99\%}$ \\
+\midrule
+\SI{600}{\nm} ($\alpha=\SI{4140}{\per\cm}$)   & \SI{5.56}{\micro\meter} & \SI{11.1}{\micro\meter} \\
+\SI{400}{\nm} ($\alpha=\SI{95200}{\per\cm}$)  & \SI{242}{\nm}           & \SI{484}{\nm} \\
+\bottomrule
+\end{tabular}
+\end{center}
+The strongly absorbed blue light (\SI{400}{\nm}) is collected within half a micron, whereas red
+light (\SI{600}{\nm}) needs a $\sim$\,20$\times$ thicker active layer.
+
+\textbf{(ii)} Going from the $90\%$ to the $99\%$ thickness, the absorbed fraction rises $0.90\to0.99$,
+so the relative change in quantum efficiency is
+\[
+\frac{\Delta\eta}{\eta}=\frac{0.99-0.90}{0.90}=+10\%,
+\]
+\emph{identical for both wavelengths}. Roughly doubling the thickness buys only $10\%$ more
+efficiency, so the returns diminish quickly.
+
+\textbf{(iii)} With $\eta=(1-\mathcal R)(1-e^{-\alpha d})\zeta$, $\zeta=1$ and $(1-e^{-\alpha d})=0.99$:
+\[
+\eta(\SI{400}{\nm})=(1-0.485)(0.99)=\mathbf{51.0\%},\qquad
+\eta(\SI{600}{\nm})=(1-0.354)(0.99)=\mathbf{63.9\%}.
+\]
+Red light reaches a higher external efficiency here purely because its surface reflectivity is lower.
+
+\paragraph{Task 2 b) Integrated photoconductor.}
+$N_D=\SI{1e17}{\per\cubic\cm}$ ($n=N_D$), $\mu_n=\SI{700}{\square\cm\per\volt\per\second}$,
+$\mu_p=\SI{240}{\square\cm\per\volt\per\second}$, $t=\SI{1}{\micro\meter}$, $W=\SI{10}{\micro\meter}$,
+$L=\SI{30}{\micro\meter}$, $V=\SI{1.8}{\volt}$.
+
+\textbf{(i) Dark current.} The well is strongly $n$-type ($p=n_i^2/n\approx\SI{2e3}{\per\cubic\cm}$ is
+negligible), so $\sigma=nq\mu_n=\SI{11.21}{\siemens\per\cm}$ and
+\[
+R=\frac{1}{\sigma}\frac{L}{Wt}=\frac{1}{11.21}\cdot\frac{30}{10\times1}\times10^{4}\ \si{\ohm}
+ =\SI{2675}{\ohm},\qquad
+I_{\mathrm{dark}}=\frac{V}{R}=\mathbf{0.67\ \si{\milli\ampere}}.
+\]
+
+\textbf{(ii) Photocurrent.} The photon flux is $\Phi=\phi\,LW=10^{16}\times(30\times10\times10^{-12})
+=\SI{3e6}{\per\second}$. The transit time is
+$\tau_e=L^2/(\mu_n V)=(\SI{3e-3}{\cm})^2/(700\times1.8)=\SI{7.14}{\nano\second}$, giving a gain
+$G=(\tau/\tau_e)(1+\mu_p/\mu_n)=14.0\times1.343=18.8$ (Task~2~b~iii). Hence
+\[
+i_p=e\,\eta\,\Phi\,G=(1.602\times10^{-19})(0.515)(3\times10^{6})(18.8)=\mathbf{4.65\ \si{\pico\ampere}}.
+\]
+(The primary photocurrent without recirculation would be $e\eta\Phi=\SI{0.25}{\pico\ampere}$.)
+
+\textbf{(iii) Gain and its geometry dependence.} Combining the expressions,
+\[
+G=\frac{\tau\,V\,(\mu_n+\mu_p)}{L^{2}}\;\propto\;\frac{1}{L^{2}},\quad\text{independent of }W.
+\]
+$G=\mathbf{18.8}$. (a) Doubling the length ($2L$) makes $\tau_e$ four times longer, so
+$G\to G/4=4.7$. (b) Doubling the width ($2W$) leaves the gain \emph{unchanged}.
+
+\textbf{(iv) Photocurrent for those cases.} Since $\Phi=\phi LW$ scales with area,
+$i_p=e\eta\Phi G\propto LW/L^{2}=W/L$:
+\[
+\text{(a) }2L:\ i_p\to\tfrac12 i_p \ \text{(area }\times2,\ G\times\tfrac14)\,;\qquad
+\text{(b) }2W:\ i_p\to 2\,i_p\ \text{(area }\times2,\ G\text{ unchanged).}
+\]
+Widening the device is the productive way to collect more photocurrent; lengthening it actually
+reduces it because the gain loss outpaces the larger collection area.
