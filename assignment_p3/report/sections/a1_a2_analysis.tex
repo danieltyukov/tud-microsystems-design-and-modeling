@@ -1,0 +1,154 @@
+\section{Part a) Optimization of the phase shifter for quantum applications}
+
+The technology now allows a minimum feature size of \SI{200}{\nano\meter}
+(all widths and gaps), a maximum feature size of \SI{1}{\milli\meter} and
+$2<N<200$; the suspended thickness stays $t=\SI{200}{\nano\meter}$ in part~a.
+Throughout this part the lumped-element model of Part~1 is used, with two
+refinements learned from the Part-2 FEM: the figure-faithful mass bookkeeping
+(two $L\times W_{m}$ plates, $N/2$ moving fingers) and the side
+(lateral) pull-in channels that the FEM identified as the real instability of
+the old design.
+
+\subsection*{a.1 -- Low-frequency modulation sensitivity and $\VDCMAX$}
+
+From Part~1 (Q8), the low-frequency limit of the modulation transfer function is
+\begin{equation}
+  \left|\frac{\Delta\phi}{\VAC}\right|_{f\to0}(\VDC)
+   = \frac{S_{\phi}(g_{\mathrm{op}})\,\eta(\VDC)}{k},\qquad
+  \eta=\VDC\,\frac{N\varepsilon_{0}t}{h},\qquad
+  S_{\phi}=\frac{2\pi L}{\lambda}\,\dneff\,b\,e^{-b\,g_{\mathrm{op}}},
+\end{equation}
+with $\dneff=0.2$. The comb drive pulls the shuttle \emph{into} the comb,
+i.e.\ away from the waveguide (sign verified by the Part-2 FEM), so the
+operating gap grows with bias:
+\begin{equation}
+  g_{\mathrm{op}}=g_{0}+x(\VDC),\qquad
+  x(\VDC)=\frac{\VDC^{2}}{2k}\,\frac{N\varepsilon_{0}t}{h}\equiv\alpha\VDC^{2}.
+\end{equation}
+The sensitivity is therefore a competition between the electromechanical
+coupling, linear in $\VDC$, and the exponentially decaying optical overlap:
+\begin{equation}
+  \left|\frac{\Delta\phi}{\VAC}\right|_{f\to0}
+  = \frac{2\pi L}{\lambda}\,\dneff\, b\,
+    e^{-b\,(g_{0}+\alpha\VDC^{2})}\,\frac{N\varepsilon_{0}t}{k\,h}\,\VDC .
+  \label{eq:SofV}
+\end{equation}
+Setting $d|H|/d\VDC=0$ gives $1-2b\,\alpha\VDC^{2}=0$, hence
+\begin{equation}
+  \boxed{\;\VDCMAX=\frac{1}{\sqrt{2b\alpha}}
+         =\sqrt{\frac{k\,h}{b\,N\,\varepsilon_{0}\,t}}\;}
+  \label{eq:VDCMAX}
+\end{equation}
+Two corollaries are worth stating explicitly. First, the displacement at the
+optimum,
+\begin{equation}
+  x(\VDCMAX)=\alpha\,\VDCMAX^{2}=\frac{1}{2b}=\SI{1.67}{\micro\meter},
+  \label{eq:xopt}
+\end{equation}
+is a \emph{purely optical} quantity -- independent of every geometric
+parameter. Whatever the design, maximum sensitivity is reached when the bar
+has moved $1/(2b)$ away from the waveguide. Second, substituting
+Eq.~\ref{eq:VDCMAX} back into Eq.~\ref{eq:SofV} gives the closed form
+\begin{equation}
+  \left|\frac{\Delta\phi}{\VAC}\right|_{\mathrm{max}}
+  = \frac{2\pi L}{\lambda}\,\dneff\;\frac{e^{-b g_{0}-1/2}}{\VDCMAX},
+  \label{eq:Smax}
+\end{equation}
+so the achievable peak sensitivity is set by the interaction length $L$, the
+rest gap $g_{0}$ and -- inversely -- by $\VDCMAX$ itself: a good design makes
+$kh/N$ \emph{small}. For the Part-1 dimensions, Eq.~\ref{eq:VDCMAX} gives
+$\VDCMAX=\SI{1377}{\volt}$, far above the derived pull-in voltage
+(\SI{347}{\volt} analytically, \SI{222}{\volt} in the Part-2 FEM): the
+sensitivity peak of the old design is unreachable
+(Fig.~\ref{fig:sensVdc}, left), which is precisely the problem this part
+fixes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=\textwidth]{figures/p3a_sensitivity_vs_V.pdf}
+\caption{Low-frequency modulation sensitivity vs DC bias,
+Eq.~\ref{eq:SofV}. Left: Part-1/2 design -- the peak at \SI{1377}{\volt} lies
+far beyond pull-in (\SI{222}{\volt}, Part-2 FEM), so only the linear toe of
+the curve is usable (\SI{8.7}{\milli\radian\per\volt} at best). Right:
+optimized design -- the peak of \SI{73.9}{\milli\radian\per\volt} at
+$\VDCMAX=\SI{627}{\volt}$ lies \emph{below} pull-in (\SI{723}{\volt}) and is
+reachable.}
+\label{fig:sensVdc}
+\end{figure}
+
+\subsection*{a.2 -- Conditions for $\VDCMAX<\VPI$}
+
+With the finger-tip pull-in model of Part~1 (Q7), where $u$ is the tip gap at
+pull-in and $g_{t0}=L_{c}-d_{0}$ the tip clearance at rest,
+\begin{equation}
+  \VPI=\sqrt{\frac{k\,u^{3}}{N\,\varepsilon_{0}\,W_{c}\,t}},
+  \qquad
+  g_{t0}=\frac{3u}{2}+\frac{u^{3}}{2hW_{c}},
+  \label{eq:VPI}
+\end{equation}
+the ratio with Eq.~\ref{eq:VDCMAX} is
+\begin{equation}
+  \left(\frac{\VDCMAX}{\VPI}\right)^{2}
+  =\frac{h\,W_{c}}{b\,u^{3}}
+  \qquad\Longrightarrow\qquad
+  \boxed{\;\VDCMAX<\VPI \iff b\,u^{3} > h\,W_{c}.\;}
+  \label{eq:cond}
+\end{equation}
+\textbf{The spring constant $k$, the comb size $N$, the thickness $t$ and
+$\varepsilon_{0}$ all cancel.} The condition is purely geometric--optical:
+stiffening the suspension or adding fingers changes both voltages by the same
+factor and cannot make the peak reachable. Because $x(V)$ is monotone in $V$,
+Eq.~\ref{eq:cond} has an equivalent and more intuitive displacement form: the
+\emph{stable comb travel} must exceed the optical optimum of
+Eq.~\ref{eq:xopt},
+\begin{equation}
+  x_{\mathrm{PI}} = g_{t0}-u \;>\; \frac{1}{2b} = \SI{1.67}{\micro\meter}.
+  \label{eq:travel}
+\end{equation}
+In the deep-clearance limit ($u^{3}/2hW_{c}\gg 3u/2$, so
+$u^{3}\to2hW_{c}\,g_{t0}$) the condition collapses to simply
+$g_{t0}>1/(2b)$. The critical terms are therefore:
+\begin{itemize}
+  \item \textbf{tip clearance} $g_{t0}=L_{c}-d_{0}$: must be much larger than
+        $1/(2b)$. Part~1 had $g_{t0}=\SI{1}{\micro\meter}$, giving
+        $x_{\mathrm{PI}}=\SI{0.40}{\micro\meter}\ll\SI{1.67}{\micro\meter}$
+        -- the fundamental flaw of the old comb. The redesign needs
+        $g_{t0}\gtrsim\SI{4}{\micro\meter}$;
+  \item \textbf{the product $hW_{c}$}: it scales the destabilizing tip force;
+        smaller $hW_{c}$ pushes pull-in deeper into the travel
+        (Eq.~\ref{eq:VPI});
+  \item the optical constant $b$ fixes both sides of the inequality and is
+        not a design variable.
+\end{itemize}
+Figure~\ref{fig:travel} visualizes Eq.~\ref{eq:travel} for both designs.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/p3a_travel_condition.pdf}
+\caption{Sensitivity as a function of the DC displacement $x$. Both curves
+peak at the universal optimum $x_{\mathrm{opt}}=1/(2b)=\SI{1.67}{\micro\meter}$
+(red dashed). The reachable travel of the Part-1/2 design (grey dash-dotted,
+$\approx\SI{0.04}{\micro\meter}$ at its FEM pull-in) ends long before the
+optimum; the optimized comb provides $x_{\mathrm{PI}}=\SI{3.07}{\micro\meter}$
+of stable travel (blue dash-dotted).}
+\label{fig:travel}
+\end{figure}
+
+\paragraph{Side pull-in: the constraint the 1-DOF model misses.}
+Part~2 showed that the old design actually fails by lateral \emph{rocking} at
+\SI{222}{\volt}, not by the axial tip mechanism at \SI{347}{\volt}. Any
+redesign must therefore also respect the side-instability channels. Four are
+modelled analytically, all driven by the per-finger lateral negative
+stiffness $k_{\mathrm{neg}}=2\varepsilon_{0}t\,d_{\mathrm{op}}V^{2}/h^{3}$
+at the operating engagement $d_{\mathrm{op}}=d_{0}+1/(2b)$:
+(1) individual finger bending (Rayleigh quotient of the engaged cantilever);
+(2) shuttle rocking against the beam-pair axial stiffness, with column
+bending in series; (3) \emph{spine bending}: the comb spine is a beam on a
+negative elastic foundation $\kappa=k_{\mathrm{neg}}/p$ ($p$ = comb pitch),
+whose cantilever half of length $\ell$ buckles at
+$\kappa_{\mathrm{crit}}=(1.875/\ell)^{4}EI_{\mathrm{spine}}$ -- this is what
+forbids arbitrarily slim plates; and (4) lateral shuttle translation.
+Combined \`a la Dunkerley and calibrated once against the Part-2 FEM (model
+\SI{247}{\volt} vs FEM \SI{222}{\volt} $\to$ factor 0.90), the model
+reproduces the old design's side pull-in within 1\%, and is used as a
+constraint set in the optimization below.

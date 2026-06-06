@@ -1,0 +1,124 @@
+\subsection*{a.3 -- Optimized dimensions}
+
+\paragraph{Formulation.} Maximize the achievable peak sensitivity,
+Eq.~\ref{eq:Smax}, $|H|_{\mathrm{max}}\propto L\,e^{-bg_{0}}/\VDCMAX$,
+over all eleven geometric parameters, subject to
+\begin{itemize}
+  \item the four assignment constraints: $f_{r}>\SI{500}{\kilo\hertz}$,
+        $\VPI>\SI{200}{\volt}$, $\VDCMAX<\VPI$,
+        $a_{0,\mathrm{max}}(\omega_{r})>\SI{2e4}{\meter\per\second\squared}$;
+  \item the travel condition Eq.~\ref{eq:travel} with 20\% margin;
+  \item the four side-stability channels (a.2) with 15\% voltage margin over
+        $\VDCMAX$;
+  \item internal-mode separation: bar/spine tip, finger and beam bending
+        modes $\ge 2.5f_{r}$ (so that the first eigenmode is cleanly the
+        actuation mode and the rigid-shuttle assumption holds);
+  \item the comb fitting under the spine, $\approx N(W_{c}+h)+6W_{c}\le L$;
+  \item technology: all features in
+        [\SI{200}{\nano\meter}, \SI{1}{\milli\meter}], $2<N<200$,
+        $t=\SI{200}{\nano\meter}$ fixed.
+\end{itemize}
+The model is the Part-1 lumped element set with figure-faithful masses
+(validated against the Part-2 FEM in Q1/Q2 there), $Q$ from the Part-1
+damping model ($b_{\mathrm{air}}=c_{\mathrm{air}}A_{m}$,
+$Q_{\mathrm{clamp}}=500$), and a full grid search over $\sim10^{6}$
+candidates followed by rounding to clean values
+(\texttt{analysis/p3a\_optimize.py}).
+
+\paragraph{Design logic.} The search converges onto a clear logic:
+\begin{enumerate}
+  \item $g_{0}$ stays at the \SI{200}{\nano\meter} minimum (sensitivity
+        $\propto e^{-bg_{0}}$);
+  \item the suspension is softened exactly to the resonance floor --
+        $\VDCMAX\propto\sqrt{kh/N}$, and $k$ may drop as far as
+        $f_{r}>\SI{500}{\kilo\hertz}$ allows. Conveniently, at
+        $g_{0}=\SI{200}{\nano\meter}$ the acceleration constraint
+        $a_{0,\mathrm{max}}(\omega_{r})=g_{0}\omega_{r}^{2}/Q$ with
+        $Q\approx\omega_{r}\rho t/c_{\mathrm{air}}\approx80$ is satisfied at
+        almost exactly the same frequency, so both floors coincide;
+  \item the comb is completely re-proportioned: short, stubby fingers
+        ($L_{c}\times W_{c}=5.5\times\SI{0.7}{\micro\meter}$, internal mode
+        \SI{32}{\mega\hertz}) at a small rest overlap $d_{0}=\SI{1}{\micro\meter}$
+        leave a tip clearance $g_{t0}=\SI{4.5}{\micro\meter}$ and a stable
+        travel $x_{\mathrm{PI}}=\SI{3.07}{\micro\meter}$, comfortably beyond
+        the \SI{1.67}{\micro\meter} optimum; $N=58$ gaps at
+        $h=\SI{0.9}{\micro\meter}$ fill the spine length;
+  \item the plates slim down to $W_{m}=\SI{10}{\micro\meter}$ -- the
+        spine-bending (negative elastic foundation) limit; thinner plates
+        would buckle sideways electrostatically far below the operating
+        voltage;
+  \item $L$ stays at \SI{100}{\micro\meter}: the plate mass required for
+        spine stability grows $\propto L^{7/3}$, so the extra optical length
+        of a longer bar is eaten by the higher $\VDCMAX$ -- the objective is
+        nearly flat in $L$, and the shortest stiff device wins on robustness.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.8\textwidth]{figures/p3a_design_space.pdf}
+\caption{The $\sim$47\,000 feasible designs of the refined search in the
+sensitivity--$\VDCMAX$ plane (color: modulation length $L$). Each arc is one
+$L$-family; the objective $|H|_{\mathrm{max}}\propto L/\VDCMAX$ improves
+toward the top left. The chosen design (star) sits on the frontier; the
+$\approx$1\% gap to the best raw grid point is the cost of rounding to clean
+dimensions.}
+\label{fig:designspace}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Final dimensions (the ``Final Value'' column of the assignment
+table) next to the Part-1/2 values.}
+\label{tab:dims}
+\begin{tabular}{llcc}
+\toprule
+Feature & Symbol & Part 1/2 & \textbf{Part 3a final}\\
+\midrule
+Length of modulation section & $L$       & \SI{100}{\micro\meter} & \textbf{\SI{100}{\micro\meter}}\\
+Modulation gap at rest       & $g_{0}$   & \SI{200}{\nano\meter}  & \textbf{\SI{200}{\nano\meter}}\\
+Length of beams              & $L_{b}$   & \SI{75}{\micro\meter}  & \textbf{\SI{40}{\micro\meter}}\\
+Width of beams               & $W_{b}$   & \SI{5}{\micro\meter}   & \textbf{\SI{1.85}{\micro\meter}}\\
+Length of mass central section & $L_{m}$ & \SI{40}{\micro\meter}  & \textbf{\SI{30}{\micro\meter}}\\
+Width of mass sections       & $W_{m}$   & \SI{30}{\micro\meter}  & \textbf{\SI{10}{\micro\meter}}\\
+Comb-drive gap               & $h$       & \SI{1}{\micro\meter}   & \textbf{\SI{0.9}{\micro\meter}}\\
+Comb-drive overlap at rest   & $d_{0}$   & \SI{19}{\micro\meter}  & \textbf{\SI{1.0}{\micro\meter}}\\
+Comb-drive finger length     & $L_{c}$   & \SI{20}{\micro\meter}  & \textbf{\SI{5.5}{\micro\meter}}\\
+Comb-drive finger width      & $W_{c}$   & \SI{1}{\micro\meter}   & \textbf{\SI{0.7}{\micro\meter}}\\
+Bottom end fingers           & $3W_{c}$  & \SI{3}{\micro\meter}   & \textbf{\SI{2.1}{\micro\meter}}\\
+Thickness of suspended parts & $t$       & \SI{200}{\nano\meter}  & \textbf{\SI{200}{\nano\meter}} (fixed)\\
+Number of comb gaps          & $N$       & 40                     & \textbf{58}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\small
+\caption{Predicted performance (analytical model) and constraint check.}
+\label{tab:perf}
+\begin{tabular}{lccc}
+\toprule
+quantity & Part 1/2 & Part 3a & constraint\\
+\midrule
+$k$ & \SI{40.3}{\newton\per\meter} & \SI{13.5}{\newton\per\meter} & --\\
+$\meff$ & \SI{3.80}{\pico\gram} & \SI{1.18}{\pico\gram} & --\\
+$f_{r}$ & 518 kHz (FEM 496) & 539 kHz (FEM 522) & $>\SI{500}{\kilo\hertz}$ \checkmark\\
+$\VDCMAX$ & \SI{1377}{\volt} & \textbf{\SI{627}{\volt}} & $<\VPI$ \checkmark (margin 1.15)\\
+$\VPI$ axial / side & 347 / \SI{222}{\volt} & 744 / \textbf{\SI{723}{\volt}} & $>\SI{200}{\volt}$ \checkmark\\
+$x_{\mathrm{PI}}$ & \SI{0.40}{\micro\meter} & \SI{3.07}{\micro\meter} & $>\SI{1.67}{\micro\meter}$ \checkmark\\
+$a_{0,\mathrm{max}}(\omega_{r})$, $Q$ & \SI{2.7e4}{\meter\per\second\squared}, 77 & \textbf{\SI{2.8e4}{\meter\per\second\squared}}, 81 & $>\SI{2e4}{\meter\per\second\squared}$ \checkmark\\
+peak $|\Delta\phi/\VAC|_{f\to0}$ (achievable) & \SI{8.7}{\milli\radian\per\volt} (222 V) & \textbf{\SI{73.9}{\milli\radian\per\volt}} (627 V) & maximized\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The achievable sensitivity improves by $8.5\times$ over the old design's best
+stable operating point, and by $183\times$ over the \SI{10}{\volt} operating
+point quoted in Part~1. One practical remark: \SI{627}{\volt} across a
+\SI{0.9}{\micro\meter} gap is a $7\times10^{8}$ V/m field -- acceptable for
+the implied vacuum/cryogenic quantum application, but it requires vacuum
+packaging (in air, breakdown would intervene first). The voltage is high
+because the fixed $t=\SI{200}{\nano\meter}$ keeps the actuator capacitance
+small; the thicker device layer of part~b would also lower
+$\VDCMAX\propto1/\sqrt{t}$.

@@ -1,0 +1,96 @@
+\documentclass[11pt,a4paper]{article}
+
+% ----- Page layout -----
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{microtype}
+
+% ----- Math -----
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{mathtools}
+\usepackage{bm}
+\usepackage{siunitx}
+  \sisetup{per-mode=symbol, separate-uncertainty=true}
+
+% ----- Graphics & figures -----
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+\usepackage{subcaption}
+
+% ----- Tables -----
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+
+% ----- Headers, hyperlinks, colors -----
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks=true,
+  linkcolor=blue!60!black,
+  urlcolor=blue!60!black,
+  citecolor=blue!60!black
+}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small ET4260 -- Microsystems Design and Modelling}
+\fancyhead[R]{\small Final assignment, Part 3/3}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+
+% ----- Custom commands -----
+\newcommand{\Vd}{V_{d}}
+\newcommand{\VDC}{V_{DC}}
+\newcommand{\VAC}{V_{\!AC}}
+\newcommand{\VDCMAX}{V_{DC\_MAX}}
+\newcommand{\VPI}{V_{\mathrm{PI}}}
+\newcommand{\xm}{x_{m}}
+\newcommand{\Fe}{F_{e}}
+\newcommand{\keff}{k_{\mathrm{eff}}}
+\newcommand{\meff}{m_{\mathrm{eff}}}
+\newcommand{\dneff}{\Delta\eta_{\mathrm{eff}}}
+
+% ----- Title block -----
+\title{\vspace{-1.5cm}
+  \textbf{Final assignment -- Part 3/3} \\[2pt]
+  \large Microsystems Design and Modelling (ET4260)}
+\author{Daniel Tyukov \\ Student number: 5714699}
+\date{}
+
+\begin{document}
+
+% ===================== Title page =====================
+\begin{titlepage}
+\centering
+\vspace*{1cm}
+{\large\textbf{DELFT UNIVERSITY OF TECHNOLOGY}}\\[2pt]
+{\small Faculty of Electrical Engineering, Mathematics and Computer Science}\\[2cm]
+\includegraphics[width=0.25\textwidth]{figures/tudelft_logo.jpeg}\\[2cm]
+{\Large\textbf{Final assignment}}\\[6pt]
+{\Large\textbf{Microsystems Design and Modelling (ET4260)}}\\[6pt]
+{\Large\textbf{Part 3/3}}\\[1.5cm]
+
+\begin{minipage}{0.85\textwidth}
+\centering\small
+\textbf{Instructions.} Document your calculations properly with derivations and screenshots when needed.
+Latex-generated PDF files are accepted.\\[6pt]
+Deadline for final report submission (parts 1+2+3): 24\textsuperscript{th} June 2026.\\
+Corrections made after the first submission are marked in \textcolor{blue}{blue}.
+\end{minipage}
+\vfill
+\rule{0.7\textwidth}{0.4pt}\\[4pt]
+{\large Daniel Tyukov}\\[2pt]
+{\large Student number: 5714699}\\[4pt]
+\rule{0.7\textwidth}{0.4pt}
+\vspace{1cm}
+\end{titlepage}
+
+\input{sections/a1_a2_analysis.tex}
+\input{sections/a3_design.tex}
+\input{sections/a4_validation.tex}
+\input{sections/b_outofplane.tex}
+
+\end{document}
