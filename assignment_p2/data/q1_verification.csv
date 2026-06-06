@@ -1,0 +1,4 @@
+verification,rigid_frame_E1000x,k_N_per_m
+rigid_plates_column,39.8345
+elastic_full_model,36.7947
+analytical_P1,40.2963

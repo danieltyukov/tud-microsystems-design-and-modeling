@@ -1,0 +1,1404 @@
+================================================================================
+MODEL: electrostatically_actuated_cantilever.mph
+================================================================================
+
+### parameters ###
+  - Parameters 1  [None]
+
+### functions ###
+
+### components ###
+  - Component 1  [Component]
+
+### geometries ###
+  - Geometry 1  [solid]
+    - Block 1  [Block]
+    - Block 2  [Block]
+    - Block 3  [Block]
+    - Block 4  [Block]
+    - Form Union  [Finalize]
+
+### selections ###
+  - Air  [Explicit]
+
+### physics ###
+  - Solid Mechanics  [SolidMechanics]
+    - Linear Elastic Material 1  [LinearElasticModel]
+        AnisotropicMatrixOption = Elasticity
+        AnisotropicOption = AnisotropicStd
+        CrystalSystem = Qubic3
+        D = ['0']
+        DVo = ['0']
+        DVo_mat = from_mat
+        D_mat = from_mat
+        Dinv = ['0']
+        DinvVo = ['0']
+        DinvVo_mat = from_mat
+        Dinv_mat = from_mat
+        E = 0
+        E_mat = from_mat
+        Evect = ['0', '0']
+        Evect_mat = from_mat
+        Evector = ['0', '0', '0']
+        Evector_mat = from_mat
+        G = 0
+        G_mat = from_mat
+        Gstb = solid.Gequ
+        Gvect1 = 0
+        Gvect1_mat = from_mat
+        Gvector = ['0', '0', '0']
+        GvectorVo = ['0', '0', '0']
+        GvectorVo_mat = from_mat
+        Gvector_mat = from_mat
+        IsotropicOption = Enu
+        K = 0
+        K_mat = from_mat
+        Kstb = solid.K
+        MixedFormulation = none
+        OrthotropicOption = OrthotropicStd
+        SolidModel = Isotropic
+        StudyStep = std1/stat
+        TransverseIsotropic = 0
+        c3cub = ['0', '0', '0']
+        c3cub_mat = userdef
+        c5hex = ['0', '0', '0', '0', '0']
+        c5hex_mat = userdef
+        c6tet = ['0', '0', '0', '0', '0', '0']
+        c6tet_mat = userdef
+        c6tri = ['0', '0', '0', '0', '0', '0']
+        c6tri_mat = userdef
+        c7tet = ['0', '0', '0', '0', '0', '0', '0']
+        c7tet_mat = userdef
+        c7tri = ['0', '0', '0', '0', '0', '0', '0']
+        c7tri_mat = userdef
+        c9ort = ['0', '0', '0', '0', '0', '0', '0', '0', '0']
+        c9ort_mat = userdef
+        coordinateSystem = GlobalSystem
+        cp = 0
+        cp_mat = from_mat
+        cs = 0
+        cs_mat = from_mat
+        eShapeFunctionType = auto
+        editModelInputs = 0
+        energySamplingPotential = linearElastic
+        fstb = 1
+        fstbPrism = 1
+        fstbmin = 1e-3
+        fullIntegrationHessian = 0
+        geometricNonlinearity = fromStudyStep
+        henckyApproximation = builtIn
+        hourglassStabilization = automatic
+        hourglassStabilizationPrism = automatic
+        inelasticDeformation = automatic
+        kstb = 1
+        lambLame = 0
+        lambLame_mat = from_mat
+        minput_concentration = 0
+        minput_concentration_src = userdef
+        minput_currentdensity = ['0', '0', '0']
+        minput_currentdensity_src = userdef
+        minput_effectiveplasticstrain = 0
+        minput_effectiveplasticstrain_src = userdef
+        minput_electricfield = ['0', '0', '0']
+        minput_electricfield_src = userdef
+        minput_frequency = root.freq
+        minput_frequency_src = userdef
+        minput_magneticfield = ['0', '0', '0']
+        minput_magneticfield_src = userdef
+        minput_magneticfluxdensity = ['0', '0', '0']
+        minput_magneticfluxdensity_src = userdef
+        minput_numberdensity = 0
+        minput_numberdensity_src = userdef
+        minput_pressure = 1[atm]
+        minput_pressure_src = userdef
+        minput_relativehumidity = 0
+        minput_relativehumidity_src = userdef
+        minput_shiftedmagneticfield = ['0', '0', '0']
+        minput_shiftedmagneticfield_src = userdef
+        minput_strainreferencetemperature = 293.15[K]
+        minput_strainreferencetemperature_src = fromCommonDef
+        minput_stress = ['0']
+        minput_stress_src = userdef
+        minput_temperature = 293.15[K]
+        minput_temperature_src = fromCommonDef
+        minput_velocity = ['0', '0', '0']
+        minput_velocity_src = userdef
+        muLame = 0
+        muLame_mat = from_mat
+        nu = 0
+        nu_mat = from_mat
+        nuvect = ['0', '0']
+        nuvect_mat = from_mat
+        nuvector = ['0', '0', '0']
+        nuvector_mat = from_mat
+        pShapeFunctionType = auto
+        reducedIntegration = 0
+        rho = 0
+        rho_mat = from_mat
+        shearStabilization = 1
+        showPhysicsSymbols = 1
+        storeDissipation = fromPhysics
+        strainDecomposition = automatic
+        volumetricStabilization = 0
+    - Free 1  [Free]
+        StudyStep = std1/stat
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+    - Initial Values 1  [init]
+        StudyStep = std1/stat
+        coordinateSystem = GlobalSystem
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+        u = ['0', '0', '0']
+        ut = ['0', '0', '0']
+    - Continuity 1  [Continuity]
+        StudyStep = std1/stat
+        applyOn = both
+        constraintMethod = nodal
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        fgamma = 1
+        formulation = skew
+        gamma = (1*solid.Eequ)/(mean(hinscribed))
+        modFormulation = 0
+        pairDisconnect = 0
+        pairSelection = all
+        pairs = []
+        pairsList = 0
+        showPhysicsSymbols = 1
+        stabilizationControl = automatic
+    - Contact 1  [SolidContact]
+        ContactMethodCtrl = Penalty
+        ContactTolType = Automatic
+        E_char = solid.Eequ
+        NitscheFormulation = nonsymmetric
+        SolutionMethod = segregated
+        StudyStep = std1/stat
+        T_0 = 0
+        Tn_init = 0
+        automaticQuadrature = 1
+        destination_offset = 0
+        doCutback = 0
+        excludeVariation = automatic
+        fieldnames = material.disp
+        fp_fin_penalty = 1
+        fp_init_penalty = 1e-1
+        fp_nitsche = 1
+        fp_penalty = 1
+        gap_tr_penalty = (-solid.hmin_dst)*1e-3
+        initgap_tol = Inf
+        integrationOrder = 4
+        irlx = 5e-3
+        isContactLog = 0
+        jacType = automatic
+        nRelax = 4
+        norelax = 0
+        order_Tn = 1
+        order_Tn_shnserp = 2
+        pairDisconnect = 0
+        pairSelection = all
+        pairs = []
+        pairsList = 0
+        penaltyCtrlAuglag = Preset
+        penaltyCtrlNitsche = Automatic
+        penaltyCtrlPenalty = Automatic
+        penaltyFunction = ramp
+        pfm = 1
+        pn = (min(1e-3*(5^niterCMP),1))*(solid.dcnt1.E_char/solid.hmin_dst)
+        pn_coupled = solid.dcnt1.E_char/solid.hmin_dst
+        pn_nitsche = solid.dcnt1.E_char/h
+        pn_penalty = solid.dcnt1.E_char/solid.hmin_dst
+        pnv = (solid.dcnt1.E_char/solid.hmin_dst)*1[ms]
+        pnv_penalty = (solid.dcnt1.E_char/solid.hmin_dst)*1[ms]
+        pressureOffsetCtrl = 0
+        shapeFunctionType = shlag
+        showPhysicsSymbols = 1
+        source_offset = 0
+        storeContactEnergy = 0
+        taun = 1[ms]
+        taun_penalty = 1[ms]
+        tolcontact = solid.dcnt1.geomsize*1e-4
+        tolsize = 0.5*solid.hmin_dst
+        tolstart = 0.1*solid.hmin_dst
+        tunedFor = Stability
+        useCutback = 0
+        useRelaxation = Always
+        viscousPenaltyCtrlAuglag = Preset
+        viscousPenaltyCtrlPenalty = Automatic
+        viscousTunedFor = Speed
+        viscousUseRelaxation = Never
+        zeroInitGap = 0
+    - General Contact 1  [GeneralContact]
+        StudyStep = std1/stat
+        excludeConstrainedBoundaries = 1
+        integrationOrder = fromDisplacement
+        jacType = automatic
+        pairDisconnect = 0
+        pairSelection = all
+        pairs = []
+        pairsList = 0
+        showPhysicsSymbols = 1
+        userIntegrationOrder = 4
+      - Contact Model 1  [ContactModel]
+          StudyStep = std1/stat
+          T_0 = 0
+          characteristicStiffness = average
+          contactDetection = automatic
+          fallbackStiffness = 100[MN/m^3]
+          fp_penalty = 1
+          integrationOrder = fromParent
+          pairContrib = fallback
+          penaltyFactorMultiplier = automatic
+          penaltyFunction = ramp
+          penaltyStiffness = stiffness
+          pressureOffsetCtrl = 0
+          showPhysicsSymbols = 1
+          storeDissipation = fromPhysics
+          tolcontact = 0.1*solid.dgcnt1.h
+          tolsize = 0.5*solid.dgcnt1.h
+          tolstart = 0.1*solid.dgcnt1.h
+          userIntegrationOrder = 4
+    - Fixed Constraint 1  [Fixed]
+        StudyStep = std1/stat
+        constraintGroup = default
+        constraintMethod = nodal
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+    - Symmetry 1  [SymmetrySolid]
+        Fn = 0
+        NormalDirectionTranslation = NoDisplacement
+        StudyStep = std1/stat
+        constraintGroup = default
+        constraintMethod = elemental
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        showPhysicsSymbols = 1
+        un0 = 0
+  - Electrostatics  [Electrostatics]
+    - Free Space 1  [FreeSpace]
+        ConstitutiveRelationDE = RelativePermittivity
+        StudyStep = std1/stat
+        materialType = nonSolid
+        showPhysicsSymbols = 1
+    - Zero Charge 1  [ZeroCharge]
+        StudyStep = std1/stat
+        constraintMethod = elemental
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+    - Initial Values 1  [init]
+        D = ['0', '0', '0']
+        StudyStep = std1/stat
+        V = 0
+        coordinateSystem = GlobalSystem
+    - Domain Terminal 1  [DomainTerminal]
+        CharacteristicImpedanceFrom = fromPhysics
+        ChargeScalingType = automatic
+        I_cir = 0
+        I_cir_src = userdef
+        P0 = 1
+        Q0 = 0
+        Q0scal = 1
+        Qinit = 0
+        StudyStep = std1/stat
+        TerminalName = 1
+        TerminalType = Voltage
+        V0 = V0
+        Vinit = 0
+        Zref = 50[ohm]
+        btn2 = 0
+        circuitConnectionStatus = notUsingCircuit
+        constraintMethod = elemental
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        derivedInformationMessage = None
+        fA = 1
+        hiddenButtonForAddElectricalCircuitConnectionAPI = 0
+        hiddenButtonForSplitByConnectivityAPI = 0
+        showPhysicsSymbols = 1
+        toBeCreatedElement = none
+        toBeReferencedElectricalCircuitTag = None
+    - Ground 1  [Ground]
+        StudyStep = std1/stat
+        constraintMethod = elemental
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+
+### multiphysics ###
+  - Electromechanics, Solid 1  [ElectromechanicalForces]
+      ElectromagneticStressTensor = Minkowski
+      Electrostatics_physics = es
+      ElectrostrictiveEffect = 0
+      SolidModel = Isotropic
+      Solid_physics = solid
+      StudyStep = std1/stat
+      a1 = 0
+      a2 = 0
+
+### materials ###
+  - Material 1  [Common]
+    - Basic  [def]
+    - Young's modulus and Poisson's ratio  [Enu]
+
+### meshes ###
+  - Mesh 1  [None]
+    - Size  [MeshSizeDefault]
+    - Mapped 1  [Map]
+      - Distribution 1  [Distribution]
+      - Distribution 2  [Distribution]
+    - Copy Edge 1  [CopyEdge]
+    - Mapped 2  [Map]
+      - Distribution 1  [Distribution]
+    - Swept 1  [Sweep]
+      - Distribution 1  [Distribution]
+      - Distribution 2  [Distribution]
+
+### studies ###
+  - Study 1  [None]
+    - Stationary  [Stationary]
+        accerrest = None
+        accerrpairs = []
+        accrespairs = []
+        accvarerrpairs = []
+        activate = ['solid', 'on', 'es', 'on', 'frame:spatial1', 'on', 'frame:material1', 'on', 'comp1', 'on']
+        activateCoupling = ['eme1', 'on']
+        activateimagereconstruct = []
+        activaterom = []
+        adapgeom = geom1
+        adaptparamname = None
+        adaptselection = []
+        adderrestvars = errandres
+        autoremesh = off
+        autoremeshgeom = geom1
+        auxsweepmethod = ignore
+        constraintgroup = [[]]
+        disableFrameControl = []
+        disabledcommon = []
+        disabledcomponent = []
+        disabledcoordinatesystems = []
+        disabledcoupling = []
+        disabledpair = []
+        disabledphysics = []
+        disabledreduced = []
+        disabledvariables = []
+        discretization = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics']
+        discretization_proxy = physics
+        equationFormCouplingColumn = ['Automatic (Stationary)']
+        equationform = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics']
+        equationform_freq = ['solid', '1[kHz]', 'es', '1[kHz]', 'frame:spatial1', '0', 'frame:material1', '0', 'comp1', '0']
+        equationform_freq_proxy = 0
+        equationform_proxy = physics
+        errestandadap = none
+        errestim = l2errest
+        errestimerrest = goalerrest
+        errexpractive = []
+        errorexpr = []
+        ftplistmethod = ignore
+        geometricNonlinearity = True
+        geometricNonlinearityActive = False
+        geomselection = ['Component 1']
+        gfintops = []
+        gfintopserrest = []
+        gfunc = None
+        gfuncerrest = None
+        gfuncpd = None
+        gfuncpderrest = None
+        goalfuncpredef = gfint
+        goalfuncpredeferrest = gfint
+        goalfunctype = gfpredef
+        goalfunctypeerrest = gfpredef
+        goalngen = 1.0
+        goalngenAUX = Automatic ( 10 )
+        goalngengroup = 1
+        goalorientedtermination = off
+        goalorientedterminationactive = []
+        goalorientedterminationexpression = []
+        goalorientedterminationtolerance = []
+        goalorientedtolerancetype = []
+        goaluserngen = False
+        goeloglevel = on
+        goeplot = on
+        goetableid = new
+        hideinitvalue = off
+        initmethod = init
+        initsol = current
+        initsolhide = on
+        initsoluse = current
+        initsolusesolnum = 1.0
+        initsolusesolnumhide = on
+        initstudy = zero
+        initstudyhide = on
+        initstudystep = None
+        initvallsq = 0.0
+        keepnotsolstatic = False
+        listsol = off
+        listsolnum = [1]
+        loadFile = None
+        loadcase = []
+        loadgroup = [[]]
+        loadgroupweight = []
+        lsqcont = off
+        lsqpcontinuation = none
+        manualsol = off
+        manualsolnum = [1.]
+        manualsolnum_vector_freqperdec = None
+        manualsolnum_vector_function = none
+        manualsolnum_vector_interval = octave
+        manualsolnum_vector_method = step
+        manualsolnum_vector_numvalues = None
+        manualsolnum_vector_start = None
+        manualsolnum_vector_step = None
+        manualsolnum_vector_stop = None
+        mesh = ['geom1', 'mesh1']
+        meshadaptmethod = longest
+        multiphysicsSelection = ['Electromechanics, Solid 1 (eme1)']
+        ngen = 1.0
+        ngenAUX = Automatic ( 1 )
+        ngengroup = 1
+        notlistsol = off
+        notlistsolnum = [1]
+        notmanualsol = off
+        notmanualsolnum = [1.]
+        notmanualsolnum_vector_freqperdec = None
+        notmanualsolnum_vector_function = none
+        notmanualsolnum_vector_interval = octave
+        notmanualsolnum_vector_method = step
+        notmanualsolnum_vector_numvalues = None
+        notmanualsolnum_vector_start = None
+        notmanualsolnum_vector_step = None
+        notmanualsolnum_vector_stop = None
+        notsol = current
+        notsolhide = on
+        notsolmethod = init
+        notsolnum = auto
+        notsolnumhide = on
+        notsoluse = current
+        notsolusesolnum = 1.0
+        notsolusesolnumhide = on
+        notsolvertype = foo
+        notstudy = zero
+        notstudyhide = on
+        notstudystep = None
+        nott = 0.0
+        nottimeinterp = off
+        oldinitsoluse = 0
+        oldnotsoluse = 0
+        optimization = False
+        outputInterface = ['Solid Mechanics (solid)', 'Electrostatics (es)', 'Moving mesh (Component 1)', 'Electromechanics, Solid 1 (eme1)']
+        outputSelectionProxy = []
+        outputhide = off
+        outputmap = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics', 'mu...
+        outputselectionmap = ['solid', '', 'es', '', 'frame:spatial1', '', 'frame:material1', '', 'comp1', '', 'multi:eme1', '']
+        pcontinuation = V0
+        pcontinuationmode = last
+        pdistrib = False
+        physselection = ['Solid Mechanics (solid)', 'Electrostatics (es)', 'Moving mesh (Component 1)']
+        plist = []
+        plistarr = [[1.0 2.0 3.0 4.0 5.0 6.0 6.05 6.1]]
+        plistarr_vector_freqperdec = ['']
+        plistarr_vector_function = ['none']
+        plistarr_vector_interval = ['octave']
+        plistarr_vector_method = ['step']
+        plistarr_vector_numvalues = ['']
+        plistarr_vector_start = ['1']
+        plistarr_vector_step = ['1']
+        plistarr_vector_stop = ['6']
+        plistarrexcelcalculatedvalues = False
+        plistarrexcelfilename = None
+        plistarrexcelincludeheaders = False
+        plistarrexceloverwrite = True
+        plistarrexcelrange = None
+        plistarrexcelseparateunits = False
+        plistarrexcelsheet = None
+        plot = off
+        plotgrouparr = ['pg1']
+        plotgroupdummy = Default
+        plotgroupgoe = Default
+        plotwindowsarr = ['graphics']
+        pname = ['V0']
+        preusesol = no
+        probefreq = pout
+        probes = []
+        probesel = all
+        punit = ['V']
+        reconstructables = []
+        reconstructors = []
+        reconstructors_proxy = none
+        romselection = []
+        saveFile = None
+        savesolsref = True
+        shapeOrder = ['comp1', 'component']
+        shapeOrder_proxy = component
+        showpreusesol = off
+        showuseparam = on
+        solnum = auto
+        solnumhide = on
+        solvertype = foo
+        stol = 0.001
+        sweeptype = sparse
+        t = 0.0
+        tableRow = None
+        timeinterp = off
+        treeSelectionKey = []
+        updateOptimizationSettings = False
+        useadvanceddisable = False
+        useinitsol = off
+        useloadcase = off
+        useparam = on
+        userngen = False
+        usesol = off
+        usestol = off
+        window = new
+        windowforpg = new
+        windowtitle = None
+        windowtitleactive = False
+
+### solutions ###
+  - Solution 1  [Parametric]
+    - Compile Equations: Stationary  [StudyStep]
+    - Dependent Variables 1  [Variables]
+      - Electric Displacement Field (Spatial Frame) (comp1.D)  [Field]
+      - Electric Potential (Material) (comp1.es.depV)  [Field]
+      - Spatial Mesh Displacement (comp1.spatial.disp)  [Field]
+      - Displacement Field (comp1.u)  [Field]
+    - Stationary Solver 1  [Stationary]
+      - Direct  [Direct]
+      - Advanced  [Advanced]
+      - Parametric 1  [Parametric]
+      - Segregated 1  [Segregated]
+      - Iterative 1  [Iterative]
+      - Iterative 2  [Iterative]
+      - Direct 1  [Direct]
+      - Iterative 3  [Iterative]
+
+### component definitions (moving mesh etc.) ###
+  -- model.common() tags --
+    cminpt: Default Model Inputs  type=CommonInputDefault
+       quantity = 
+       showOnlyNeeded = 
+       minpVisibility = on
+       modified = 
+    free1: Deforming Domain 1  type=DeformingDomain
+       analysisCaseDeactivated = off
+       analysisCaseEdited = off
+       deformingFrame = spatial
+       smoothingType = hyperelastic
+       stiffeningFactor = 10
+       volumetricStrain = linear
+       stabilization = none
+       tuningParameter = 1e-6*dGeomChar^2
+       initialDeformation = 0, 0, 0
+    sym1: Symmetry/Roller 1  type=Symmetry
+       analysisCaseDeactivated = off
+       analysisCaseEdited = off
+       deformingFrame = spatial
+================================================================================
+MODEL: biased_resonator_2d_pull_in.mph
+================================================================================
+
+### parameters ###
+  - Parameters 1  [None]
+
+### functions ###
+
+### components ###
+  - Component 1  [Component]
+
+### geometries ###
+  - Geometry 1  [solid]
+    - Rectangle 1  [Rectangle]
+    - Rectangle 2  [Rectangle]
+    - Rectangle 3  [Rectangle]
+    - Mirror 1  [Mirror]
+    - Form Union  [Finalize]
+
+### selections ###
+  - Air  [Explicit]
+
+### physics ###
+  - Solid Mechanics  [SolidMechanics]
+    - Linear Elastic Material 1  [LinearElasticModel]
+        AnisotropicMatrixOption = Elasticity
+        AnisotropicOption = AnisotropicStd
+        CrystalSystem = Qubic3
+        D = ['0']
+        DVo = ['0']
+        DVo_mat = from_mat
+        D_mat = from_mat
+        Dinv = ['0']
+        DinvVo = ['0']
+        DinvVo_mat = from_mat
+        Dinv_mat = from_mat
+        E = 0
+        E_mat = from_mat
+        Evect = ['0', '0']
+        Evect_mat = from_mat
+        Evector = ['0', '0', '0']
+        Evector_mat = from_mat
+        G = 0
+        G_mat = from_mat
+        Gstb = solid.Gequ
+        Gvect1 = 0
+        Gvect1_mat = from_mat
+        Gvector = ['0', '0', '0']
+        GvectorVo = ['0', '0', '0']
+        GvectorVo_mat = from_mat
+        Gvector_mat = from_mat
+        IsotropicOption = Enu
+        K = 0
+        K_mat = from_mat
+        Kstb = solid.K
+        MixedFormulation = none
+        OrthotropicOption = OrthotropicStd
+        SolidModel = Isotropic
+        StudyStep = std1/stat
+        TransverseIsotropic = 0
+        c3cub = ['0', '0', '0']
+        c3cub_mat = userdef
+        c5hex = ['0', '0', '0', '0', '0']
+        c5hex_mat = userdef
+        c6tet = ['0', '0', '0', '0', '0', '0']
+        c6tet_mat = userdef
+        c6tri = ['0', '0', '0', '0', '0', '0']
+        c6tri_mat = userdef
+        c7tet = ['0', '0', '0', '0', '0', '0', '0']
+        c7tet_mat = userdef
+        c7tri = ['0', '0', '0', '0', '0', '0', '0']
+        c7tri_mat = userdef
+        c9ort = ['0', '0', '0', '0', '0', '0', '0', '0', '0']
+        c9ort_mat = userdef
+        coordinateSystem = GlobalSystem
+        cp = 0
+        cp_mat = from_mat
+        cs = 0
+        cs_mat = from_mat
+        eShapeFunctionType = auto
+        editModelInputs = 0
+        energySamplingPotential = linearElastic
+        fstb = 1
+        fstbPrism = 1
+        fstbmin = 1e-3
+        geometricNonlinearity = fromStudyStep
+        henckyApproximation = builtIn
+        hourglassStabilization = automatic
+        hourglassStabilizationPrism = automatic
+        inelasticDeformation = automatic
+        kstb = 1
+        lambLame = 0
+        lambLame_mat = from_mat
+        minput_concentration = 0
+        minput_concentration_src = userdef
+        minput_currentdensity = ['0', '0', '0']
+        minput_currentdensity_src = userdef
+        minput_effectiveplasticstrain = 0
+        minput_effectiveplasticstrain_src = userdef
+        minput_electricfield = ['0', '0', '0']
+        minput_electricfield_src = userdef
+        minput_frequency = root.freq
+        minput_frequency_src = userdef
+        minput_magneticfield = ['0', '0', '0']
+        minput_magneticfield_src = userdef
+        minput_magneticfluxdensity = ['0', '0', '0']
+        minput_magneticfluxdensity_src = userdef
+        minput_numberdensity = 0
+        minput_numberdensity_src = userdef
+        minput_pressure = 1[atm]
+        minput_pressure_src = userdef
+        minput_relativehumidity = 0
+        minput_relativehumidity_src = userdef
+        minput_shiftedmagneticfield = ['0', '0', '0']
+        minput_shiftedmagneticfield_src = userdef
+        minput_strainreferencetemperature = 293.15[K]
+        minput_strainreferencetemperature_src = fromCommonDef
+        minput_stress = ['0']
+        minput_stress_src = userdef
+        minput_temperature = 293.15[K]
+        minput_temperature_src = fromCommonDef
+        minput_velocity = ['0', '0', '0']
+        minput_velocity_src = userdef
+        muLame = 0
+        muLame_mat = from_mat
+        nu = 0
+        nu_mat = from_mat
+        nuvect = ['0', '0']
+        nuvect_mat = from_mat
+        nuvector = ['0', '0', '0']
+        nuvector_mat = from_mat
+        pShapeFunctionType = auto
+        reducedIntegration = 0
+        rho = 0
+        rho_mat = from_mat
+        shearStabilization = 1
+        showPhysicsSymbols = 1
+        storeDissipation = fromPhysics
+        strainDecomposition = automatic
+        volumetricStabilization = 0
+    - Free 1  [Free]
+        StudyStep = std1/stat
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+    - Initial Values 1  [init]
+        StudyStep = std1/stat
+        coordinateSystem = GlobalSystem
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+        u = ['0', '0', '0']
+        ut = ['0', '0', '0']
+    - Continuity 1  [Continuity]
+        StudyStep = std1/stat
+        applyOn = both
+        constraintMethod = nodal
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        fgamma = 1
+        formulation = skew
+        gamma = (1*solid.Eequ)/(mean(hinscribed))
+        modFormulation = 0
+        pairDisconnect = 0
+        pairSelection = all
+        pairs = []
+        pairsList = 0
+        showPhysicsSymbols = 1
+        stabilizationControl = automatic
+    - Contact 1  [SolidContact]
+        ContactMethodCtrl = Penalty
+        ContactTolType = Automatic
+        E_char = solid.Eequ
+        NitscheFormulation = nonsymmetric
+        SolutionMethod = segregated
+        StudyStep = std1/stat
+        T_0 = 0
+        Tn_init = 0
+        automaticQuadrature = 1
+        destination_offset = 0
+        doCutback = 0
+        excludeVariation = automatic
+        fieldnames = material.disp
+        fp_fin_penalty = 1
+        fp_init_penalty = 1e-1
+        fp_nitsche = 1
+        fp_penalty = 1
+        gap_tr_penalty = (-solid.hmin_dst)*1e-3
+        initgap_tol = Inf
+        integrationOrder = 4
+        irlx = 5e-3
+        isContactLog = 0
+        jacType = automatic
+        nRelax = 4
+        norelax = 0
+        order_Tn = 1
+        order_Tn_shnserp = 2
+        pairDisconnect = 0
+        pairSelection = all
+        pairs = []
+        pairsList = 0
+        penaltyCtrlAuglag = Preset
+        penaltyCtrlNitsche = Automatic
+        penaltyCtrlPenalty = Automatic
+        penaltyFunction = ramp
+        pfm = 1
+        pn = (min(1e-3*(5^niterCMP),1))*(solid.dcnt1.E_char/solid.hmin_dst)
+        pn_coupled = solid.dcnt1.E_char/solid.hmin_dst
+        pn_nitsche = solid.dcnt1.E_char/h
+        pn_penalty = solid.dcnt1.E_char/solid.hmin_dst
+        pnv = (solid.dcnt1.E_char/solid.hmin_dst)*1[ms]
+        pnv_penalty = (solid.dcnt1.E_char/solid.hmin_dst)*1[ms]
+        pressureOffsetCtrl = 0
+        shapeFunctionType = shlag
+        showPhysicsSymbols = 1
+        source_offset = 0
+        storeContactEnergy = 0
+        taun = 1[ms]
+        taun_penalty = 1[ms]
+        tolcontact = solid.dcnt1.geomsize*1e-4
+        tolsize = 0.5*solid.hmin_dst
+        tolstart = 0.1*solid.hmin_dst
+        tunedFor = Stability
+        useCutback = 0
+        useRelaxation = Always
+        viscousPenaltyCtrlAuglag = Preset
+        viscousPenaltyCtrlPenalty = Automatic
+        viscousTunedFor = Speed
+        viscousUseRelaxation = Never
+        zeroInitGap = 0
+    - General Contact 1  [GeneralContact]
+        StudyStep = std1/stat
+        excludeConstrainedBoundaries = 1
+        integrationOrder = fromDisplacement
+        jacType = automatic
+        pairDisconnect = 0
+        pairSelection = all
+        pairs = []
+        pairsList = 0
+        showPhysicsSymbols = 1
+        userIntegrationOrder = 4
+      - Contact Model 1  [ContactModel]
+          StudyStep = std1/stat
+          T_0 = 0
+          characteristicStiffness = average
+          contactDetection = automatic
+          fallbackStiffness = 100[MN/m^3]
+          fp_penalty = 1
+          integrationOrder = fromParent
+          pairContrib = fallback
+          penaltyFactorMultiplier = automatic
+          penaltyFunction = ramp
+          penaltyStiffness = stiffness
+          pressureOffsetCtrl = 0
+          showPhysicsSymbols = 1
+          storeDissipation = fromPhysics
+          tolcontact = 0.1*solid.dgcnt1.h
+          tolsize = 0.5*solid.dgcnt1.h
+          tolstart = 0.1*solid.dgcnt1.h
+          userIntegrationOrder = 4
+    - Fixed Constraint 1  [Fixed]
+        StudyStep = std1/stat
+        constraintGroup = default
+        constraintMethod = nodal
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+  - Electrostatics  [Electrostatics]
+    - Free Space 1  [FreeSpace]
+        ConstitutiveRelationDE = RelativePermittivity
+        StudyStep = std1/stat
+        materialType = nonSolid
+        showPhysicsSymbols = 1
+    - Zero Charge 1  [ZeroCharge]
+        StudyStep = std1/stat
+        constraintMethod = elemental
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+    - Initial Values 1  [init]
+        D = ['0', '0', '0']
+        StudyStep = std1/stat
+        V = 0
+        coordinateSystem = GlobalSystem
+    - Domain Terminal 1  [DomainTerminal]
+        CharacteristicImpedanceFrom = fromPhysics
+        ChargeScalingType = automatic
+        I_cir = 0
+        I_cir_src = userdef
+        P0 = 1
+        Q0 = 0
+        Q0scal = 1
+        Qinit = 0
+        StudyStep = std1/stat
+        TerminalName = 1
+        TerminalType = Voltage
+        V0 = 0
+        Vinit = 0
+        Zref = 50[ohm]
+        btn2 = 0
+        circuitConnectionStatus = notUsingCircuit
+        constraintMethod = elemental
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        derivedInformationMessage = None
+        fA = 1
+        hiddenButtonForAddElectricalCircuitConnectionAPI = 0
+        hiddenButtonForSplitByConnectivityAPI = 0
+        showPhysicsSymbols = 1
+        toBeCreatedElement = none
+        toBeReferencedElectricalCircuitTag = None
+    - Electric Potential 1  [ElectricPotential]
+        StudyStep = std1/stat
+        V0 = Vdc
+        constraintMethod = elemental
+        constraintOptions = pointwiseConstraints
+        constraintType = symmetricConstraint
+        pairContrib = fallback
+        showPhysicsSymbols = 1
+    - Global Equations 1  [GlobalEquations]
+        CustomDependentVariableUnit = m
+        CustomSourceTermUnit = m
+        DependentVariableQuantity = electricpotential
+        SourceTermQuantity = dimensionless
+        StudyStep = std1/stat
+        description = ['DC bias voltage']
+        equation = ['vrel-vmid']
+        fieldName = ODE1
+        initialValueU = ['0']
+        initialValueUt = ['0']
+        name = ['Vdc']
+        pairContrib = fallback
+        valueType = complex
+
+### multiphysics ###
+  - Electromechanics, Solid 1  [ElectromechanicalForces]
+      ElectromagneticStressTensor = Minkowski
+      Electrostatics_physics = es
+      ElectrostrictiveEffect = 0
+      SolidModel = Isotropic
+      Solid_physics = solid
+      StudyStep = std1/stat
+      a1 = 0
+      a2 = 0
+
+### materials ###
+  - Si - Polycrystalline silicon  [Common]
+    - Basic  [def]
+    - Young's modulus and Poisson's ratio  [Enu]
+
+### meshes ###
+  - Mesh 1  [None]
+    - Size  [MeshSizeDefault]
+    - Mapped 1  [Map]
+      - Distribution 1  [Distribution]
+      - Distribution 2  [Distribution]
+
+### studies ###
+  - Stationary  [None]
+    - Stationary  [Stationary]
+        accerrest = None
+        accerrpairs = []
+        accrespairs = []
+        accvarerrpairs = []
+        activate = ['solid', 'on', 'es', 'on', 'frame:spatial1', 'on', 'frame:material1', 'on', 'comp1', 'on']
+        activateCoupling = ['eme1', 'on']
+        activateimagereconstruct = []
+        activaterom = []
+        adapgeom = geom1
+        adaptparamname = None
+        adaptselection = []
+        adderrestvars = errandres
+        autoremesh = off
+        autoremeshgeom = geom1
+        auxsweepmethod = ignore
+        constraintgroup = [[]]
+        disableFrameControl = []
+        disabledcommon = []
+        disabledcomponent = []
+        disabledcoordinatesystems = []
+        disabledcoupling = []
+        disabledpair = []
+        disabledphysics = ['es/ge1']
+        disabledreduced = []
+        disabledvariables = []
+        discretization = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics']
+        discretization_proxy = physics
+        equationFormCouplingColumn = ['Automatic (Stationary)']
+        equationform = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics']
+        equationform_freq = ['solid', '1[kHz]', 'es', '1[kHz]', 'frame:spatial1', '0', 'frame:material1', '0', 'comp1', '0']
+        equationform_freq_proxy = 0
+        equationform_proxy = physics
+        errestandadap = none
+        errestim = l2errest
+        errestimerrest = goalerrest
+        errexpractive = []
+        errorexpr = []
+        ftplistmethod = ignore
+        geometricNonlinearity = True
+        geometricNonlinearityActive = False
+        geomselection = ['Component 1']
+        gfintops = []
+        gfintopserrest = []
+        gfunc = None
+        gfuncerrest = None
+        gfuncpd = None
+        gfuncpderrest = None
+        goalfuncpredef = gfint
+        goalfuncpredeferrest = gfint
+        goalfunctype = gfpredef
+        goalfunctypeerrest = gfpredef
+        goalngen = 1.0
+        goalngenAUX = Automatic ( 15 )
+        goalngengroup = 1
+        goalorientedtermination = off
+        goalorientedterminationactive = []
+        goalorientedterminationexpression = []
+        goalorientedterminationtolerance = []
+        goalorientedtolerancetype = []
+        goaluserngen = False
+        goeloglevel = on
+        goeplot = on
+        goetableid = new
+        hideinitvalue = off
+        initmethod = init
+        initsol = current
+        initsolhide = on
+        initsoluse = current
+        initsolusesolnum = 1.0
+        initsolusesolnumhide = on
+        initstudy = zero
+        initstudyhide = on
+        initstudystep = None
+        initvallsq = 0.0
+        keepnotsolstatic = False
+        listsol = off
+        listsolnum = [1]
+        loadFile = None
+        loadcase = []
+        loadgroup = [[]]
+        loadgroupweight = []
+        lsqcont = off
+        lsqpcontinuation = none
+        manualsol = off
+        manualsolnum = [1.]
+        manualsolnum_vector_freqperdec = None
+        manualsolnum_vector_function = none
+        manualsolnum_vector_interval = octave
+        manualsolnum_vector_method = step
+        manualsolnum_vector_numvalues = None
+        manualsolnum_vector_start = None
+        manualsolnum_vector_step = None
+        manualsolnum_vector_stop = None
+        mesh = ['geom1', 'mesh1']
+        meshadaptmethod = longest
+        multiphysicsSelection = ['Electromechanics, Solid 1 (eme1)']
+        ngen = 1.0
+        ngenAUX = Automatic ( 2 )
+        ngengroup = 1
+        notlistsol = off
+        notlistsolnum = [1]
+        notmanualsol = off
+        notmanualsolnum = [1.]
+        notmanualsolnum_vector_freqperdec = None
+        notmanualsolnum_vector_function = none
+        notmanualsolnum_vector_interval = octave
+        notmanualsolnum_vector_method = step
+        notmanualsolnum_vector_numvalues = None
+        notmanualsolnum_vector_start = None
+        notmanualsolnum_vector_step = None
+        notmanualsolnum_vector_stop = None
+        notsol = current
+        notsolhide = on
+        notsolmethod = init
+        notsolnum = auto
+        notsolnumhide = on
+        notsoluse = current
+        notsolusesolnum = 1.0
+        notsolusesolnumhide = on
+        notsolvertype = foo
+        notstudy = zero
+        notstudyhide = on
+        notstudystep = None
+        nott = 0.0
+        nottimeinterp = off
+        oldinitsoluse = 0
+        oldnotsoluse = 0
+        optimization = False
+        outputInterface = ['Solid Mechanics (solid)', 'Electrostatics (es)', 'Moving mesh (Component 1)', 'Electromechanics, Solid 1 (eme1)']
+        outputSelectionProxy = []
+        outputhide = off
+        outputmap = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics', 'mu...
+        outputselectionmap = ['solid', '', 'es', '', 'frame:spatial1', '', 'frame:material1', '', 'comp1', '', 'multi:eme1', '']
+        pcontinuation = None
+        pcontinuationmode = last
+        pdistrib = False
+        physselection = ['Solid Mechanics (solid)', 'Electrostatics (es)', 'Moving mesh (Component 1)']
+        plist = []
+        plistarr = []
+        plistarr_vector_freqperdec = []
+        plistarr_vector_function = []
+        plistarr_vector_interval = ['octave']
+        plistarr_vector_method = []
+        plistarr_vector_numvalues = []
+        plistarr_vector_start = []
+        plistarr_vector_step = []
+        plistarr_vector_stop = []
+        plistarrexcelcalculatedvalues = False
+        plistarrexcelfilename = None
+        plistarrexcelincludeheaders = False
+        plistarrexceloverwrite = True
+        plistarrexcelrange = None
+        plistarrexcelseparateunits = False
+        plistarrexcelsheet = None
+        plot = off
+        plotgrouparr = ['pg1']
+        plotgroupdummy = Default
+        plotgroupgoe = Default
+        plotwindowsarr = ['graphics']
+        pname = []
+        preusesol = no
+        probefreq = pout
+        probes = ['point1']
+        probesel = all
+        punit = []
+        reconstructables = []
+        reconstructors = []
+        reconstructors_proxy = none
+        romselection = []
+        saveFile = None
+        savesolsref = True
+        shapeOrder = ['comp1', 'component']
+        shapeOrder_proxy = component
+        showpreusesol = off
+        showuseparam = on
+        solnum = auto
+        solnumhide = on
+        solvertype = foo
+        stol = 0.001
+        sweeptype = sparse
+        t = 0.0
+        tableRow = None
+        timeinterp = off
+        treeSelectionKey = []
+        updateOptimizationSettings = False
+        useadvanceddisable = True
+        useinitsol = off
+        useloadcase = off
+        useparam = off
+        userngen = False
+        usesol = off
+        usestol = off
+        window = new
+        windowforpg = new
+        windowtitle = None
+        windowtitleactive = False
+  - Pull In  [None]
+    - Stationary  [Stationary]
+        accerrest = None
+        accerrpairs = []
+        accrespairs = []
+        accvarerrpairs = []
+        activate = ['solid', 'on', 'es', 'on', 'frame:spatial1', 'on', 'frame:material1', 'on', 'comp1', 'on']
+        activateCoupling = ['eme1', 'on']
+        activateimagereconstruct = []
+        activaterom = []
+        adapgeom = geom1
+        adaptparamname = None
+        adaptselection = []
+        adderrestvars = errandres
+        autoremesh = off
+        autoremeshgeom = geom1
+        auxsweepmethod = ignore
+        constraintgroup = [[]]
+        disableFrameControl = []
+        disabledcommon = []
+        disabledcomponent = []
+        disabledcoordinatesystems = []
+        disabledcoupling = []
+        disabledpair = []
+        disabledphysics = []
+        disabledreduced = []
+        disabledvariables = []
+        discretization = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics']
+        discretization_proxy = physics
+        equationFormCouplingColumn = ['Automatic (Stationary)']
+        equationform = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics']
+        equationform_freq = ['solid', '1[kHz]', 'es', '1[kHz]', 'frame:spatial1', '0', 'frame:material1', '0', 'comp1', '0']
+        equationform_freq_proxy = 0
+        equationform_proxy = physics
+        errestandadap = none
+        errestim = l2errest
+        errestimerrest = goalerrest
+        errexpractive = []
+        errorexpr = []
+        ftplistmethod = ignore
+        geometricNonlinearity = True
+        geometricNonlinearityActive = False
+        geomselection = ['Component 1']
+        gfintops = []
+        gfintopserrest = []
+        gfunc = None
+        gfuncerrest = None
+        gfuncpd = None
+        gfuncpderrest = None
+        goalfuncpredef = gfint
+        goalfuncpredeferrest = gfint
+        goalfunctype = gfpredef
+        goalfunctypeerrest = gfpredef
+        goalngen = 1.0
+        goalngenAUX = Automatic ( 15 )
+        goalngengroup = 1
+        goalorientedtermination = off
+        goalorientedterminationactive = []
+        goalorientedterminationexpression = []
+        goalorientedterminationtolerance = []
+        goalorientedtolerancetype = []
+        goaluserngen = False
+        goeloglevel = on
+        goeplot = on
+        goetableid = new
+        hideinitvalue = off
+        initmethod = sol
+        initsol = current
+        initsolhide = on
+        initsoluse = current
+        initsolusesolnum = 1.0
+        initsolusesolnumhide = on
+        initstudy = std1
+        initstudyhide = off
+        initstudystep = stat
+        initvallsq = 0.0
+        keepnotsolstatic = False
+        listsol = off
+        listsolnum = [1]
+        loadFile = None
+        loadcase = []
+        loadgroup = [[]]
+        loadgroupweight = []
+        lsqcont = off
+        lsqpcontinuation = none
+        manualsol = off
+        manualsolnum = [1.]
+        manualsolnum_vector_freqperdec = None
+        manualsolnum_vector_function = none
+        manualsolnum_vector_interval = octave
+        manualsolnum_vector_method = step
+        manualsolnum_vector_numvalues = None
+        manualsolnum_vector_start = None
+        manualsolnum_vector_step = None
+        manualsolnum_vector_stop = None
+        mesh = ['geom1', 'mesh1']
+        meshadaptmethod = longest
+        multiphysicsSelection = ['Electromechanics, Solid 1 (eme1)']
+        ngen = 1.0
+        ngenAUX = Automatic ( 2 )
+        ngengroup = 1
+        notlistsol = off
+        notlistsolnum = [1]
+        notmanualsol = off
+        notmanualsolnum = [1.]
+        notmanualsolnum_vector_freqperdec = None
+        notmanualsolnum_vector_function = none
+        notmanualsolnum_vector_interval = octave
+        notmanualsolnum_vector_method = step
+        notmanualsolnum_vector_numvalues = None
+        notmanualsolnum_vector_start = None
+        notmanualsolnum_vector_step = None
+        notmanualsolnum_vector_stop = None
+        notsol = current
+        notsolhide = on
+        notsolmethod = init
+        notsolnum = auto
+        notsolnumhide = on
+        notsoluse = current
+        notsolusesolnum = 1.0
+        notsolusesolnumhide = on
+        notsolvertype = foo
+        notstudy = zero
+        notstudyhide = on
+        notstudystep = None
+        nott = 0.0
+        nottimeinterp = off
+        oldinitsoluse = 0
+        oldnotsoluse = 0
+        optimization = False
+        outputInterface = ['Solid Mechanics (solid)', 'Electrostatics (es)', 'Moving mesh (Component 1)', 'Electromechanics, Solid 1 (eme1)']
+        outputSelectionProxy = []
+        outputhide = off
+        outputmap = ['solid', 'physics', 'es', 'physics', 'frame:spatial1', 'physics', 'frame:material1', 'physics', 'comp1', 'physics', 'mu...
+        outputselectionmap = ['solid', '', 'es', '', 'frame:spatial1', '', 'frame:material1', '', 'comp1', '', 'multi:eme1', '']
+        pcontinuation = vrel
+        pcontinuationmode = last
+        pdistrib = False
+        physselection = ['Solid Mechanics (solid)', 'Electrostatics (es)', 'Moving mesh (Component 1)']
+        plist = []
+        plistarr = [[-0.3 -0.31 -0.32 -0.32999999999999996 -0.33999999999999997 -0.35 -0.36
+  -0.37 -0.38 -0.39 -0.4 -0.41 -0.42 -0.43 -0.4...
+        plistarr_vector_freqperdec = []
+        plistarr_vector_function = []
+        plistarr_vector_interval = ['octave']
+        plistarr_vector_method = []
+        plistarr_vector_numvalues = []
+        plistarr_vector_start = []
+        plistarr_vector_step = []
+        plistarr_vector_stop = []
+        plistarrexcelcalculatedvalues = False
+        plistarrexcelfilename = None
+        plistarrexcelincludeheaders = False
+        plistarrexceloverwrite = True
+        plistarrexcelrange = None
+        plistarrexcelseparateunits = False
+        plistarrexcelsheet = None
+        plot = off
+        plotgrouparr = ['pg1']
+        plotgroupdummy = pg1
+        plotgroupgoe = Default
+        plotwindowsarr = ['graphics']
+        pname = ['vrel']
+        preusesol = no
+        probefreq = pout
+        probes = ['point1']
+        probesel = none
+        punit = ['']
+        reconstructables = []
+        reconstructors = []
+        reconstructors_proxy = none
+        romselection = []
+        saveFile = None
+        savesolsref = True
+        shapeOrder = ['comp1', 'component']
+        shapeOrder_proxy = component
+        showpreusesol = off
+        showuseparam = on
+        solnum = auto
+        solnumhide = off
+        solvertype = foo
+        stol = 0.001
+        sweeptype = sparse
+        t = 0.0
+        tableRow = None
+        timeinterp = off
+        treeSelectionKey = []
+        updateOptimizationSettings = False
+        useadvanceddisable = False
+        useinitsol = on
+        useloadcase = off
+        useparam = on
+        userngen = False
+        usesol = off
+        usestol = off
+        window = new
+        windowforpg = new
+        windowtitle = None
+        windowtitleactive = False
+
+### solutions ###
+  - Solution 1  [Stationary]
+    - Compile Equations: Stationary  [StudyStep]
+    - Dependent Variables 1  [Variables]
+      - Electric Displacement Field (Spatial Frame) (comp1.D)  [Field]
+      - Electric Potential (Material) (comp1.es.depV)  [Field]
+      - Spatial Mesh Displacement (comp1.spatial.disp)  [Field]
+      - Displacement Field (comp1.u)  [Field]
+    - Stationary Solver 1  [Stationary]
+      - Direct  [Direct]
+      - Advanced  [Advanced]
+      - Segregated 1  [Segregated]
+  - Solution 2  [Parametric]
+    - Compile Equations: Stationary  [StudyStep]
+    - Dependent Variables 1  [Variables]
+      - Electric Displacement Field (Spatial Frame) (comp1.D)  [Field]
+      - Electric Potential (Material) (comp1.es.depV)  [Field]
+      - Spatial Mesh Displacement (comp1.spatial.disp)  [Field]
+      - Displacement Field (comp1.u)  [Field]
+      - Global Equations 1 (comp1.ODE1)  [State]
+    - Stationary Solver 1  [Stationary]
+      - Direct  [Direct]
+      - Advanced  [Advanced]
+      - Parametric 1  [Parametric]
+      - Segregated 1  [Segregated]
+      - Fully Coupled 1  [FullyCoupled]
+
+### component definitions (moving mesh etc.) ###
+  -- model.common() tags --
+    cminpt: Default Model Inputs  type=CommonInputDefault
+       quantity = 
+       showOnlyNeeded = 
+       minpVisibility = on
+       modified = 
+    free1: Deforming Domain 1  type=DeformingDomain
+       analysisCaseDeactivated = off
+       analysisCaseEdited = off
+       deformingFrame = spatial
+       smoothingType = hyperelastic
+       stiffeningFactor = 10
+       volumetricStrain = linear
+       stabilization = none
+       tuningParameter = 1e-6*dGeomChar^2
+       initialDeformation = 0, 0, 0
+    sym1: Symmetry/Roller 1  type=Symmetry
+       analysisCaseDeactivated = off
+       analysisCaseEdited = off
+       deformingFrame = spatial
