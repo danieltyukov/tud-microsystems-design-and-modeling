@@ -32,10 +32,13 @@ unchanged.
   mesh (51 k elem, thickness = 1) giving 223–225 V (script `16_q4b_lean.py`,
   data `q4b_eig_vs_bias_fine.csv`, figure overlay).
 - **Q6 1 V settling**: root-caused the first submission's unphysical 75 µs decay
-  (generalised-α numerical dissipation at picometre amplitude); corrected to
-  **152 µs** (= resolved 50 V trace, by linearity, ≡ Q3). Direct-resolution
-  route (rtol 1e-7 + reduced ρ∞ + manual pm-scale tolerance) documented; figures
-  regenerated.
+  (generalised-α numerical dissipation at picometre amplitude). A **direct 1 V
+  re-run** (reduced ρ∞→1, tightened rtol) reproduces the correct final value
+  (1.55 pm) and near-ideal **1.92× overshoot**, confirming the 75 µs was an
+  artefact. Settling quoted as **152 µs** from the well-resolved 50 V trace
+  (= 1 V by linearity ≡ Q3 158 µs ≈ analytic 159 µs), since the pm-scale tail
+  stays numerically sensitive. Scripts `19_q6_light.py` (2-core), data
+  `q6_vstep_1V_direct.csv`, figures regenerated.
 
 ## Re-simulation environment
 
