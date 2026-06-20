@@ -8,6 +8,8 @@ Two model flavours:
 import mph
 from jpype import JInt
 
+mph.option('classkit', True)   # TU Delft Class Kit License: start COMSOL server with -ckl
+
 UM = 1e-6
 BASE = '/home/danieltyukov/workspace/tud/tud-microsystems-design-and-modeling/assignment_p2'
 MODELS = f'{BASE}/comsol/models'

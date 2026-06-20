@@ -157,6 +157,46 @@ features are \SI{1}{\micro\meter}.}
 \label{fig:mesh}
 \end{figure}
 
+\subsection*{\textcolor{blue}{Boundary conditions and loads}}
+\textcolor{blue}{%
+Table~\ref{tab:bc} lists every constraint and load used in the FEM studies
+and the geometric entity each one acts on. Two points set the character of
+all the results. First, the only mechanical constraint is a \emph{fixed
+constraint on the four beam outer-end edges} -- the anchor edges at
+$x=\pm90~\si{\micro\meter}$ in Fig.~\ref{fig:mesh}; every other boundary is
+free. Second, the mechanical loads are \emph{distributed body loads over whole
+domains}, not point or central loads: the spring-constant and force-step
+studies (Q1, Q3) push on the comb-spine mass-plate domain with a prescribed
+total force, while the acceleration study (Q5) loads the entire suspended
+structure with $\rho a$. The electrostatic drive (Q4, Q6) is not a mechanical
+load: it enters as the Maxwell stress that the Electromechanical Forces
+coupling transfers from the air onto the solid boundaries, set by the terminal
+voltages below.}
+
+\begin{table}[H]
+\centering
+\small
+\caption{\textcolor{blue}{Boundary conditions and loads in the FEM model, and
+the entity each is applied to.}}
+\label{tab:bc}
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
+\toprule
+\textbf{Physics} & \textbf{Condition} & \textbf{Where applied (entity)}\\
+\midrule
+Solid Mechanics & Fixed constraint            & four beam outer-end \emph{edges}, $x=\pm90~\si{\micro\meter}$ (anchors)\\
+Solid Mechanics & Body load (Q1, Q3)          & comb-spine mass-plate \emph{domain}; total $\SI{1}{\micro\newton}$ along $+y$ (Q1 static, Q3 step)\\
+Solid Mechanics & Body load (Q5)              & \emph{all} suspended-Si domains; $\rho a$ along $+y$ (toward the waveguide)\\
+Solid Mechanics & Free                        & every other edge (default)\\
+Electrostatics  & Domain Terminal, $V=0$      & whole suspended-Si domain (shuttle); grounds it and returns its charge $\Rightarrow C$\\
+Electrostatics  & Electric Potential, $V=\Vd$ & stator floor edge ($y=-121~\si{\micro\meter}$) and the 21 fixed-finger boundaries\\
+Electrostatics  & Zero charge                 & air side openings, $x=\pm46~\si{\micro\meter}$ (default)\\
+Moving Mesh     & Deforming Domain            & air domain; hyperelastic smoothing, follows the solids\\
+Moving Mesh     & Symmetry (roller)           & air side openings; mesh slides along the opening\\
+Multiphysics    & Electromechanical Forces    & all solid domains (Maxwell stress $\rightarrow$ structure)\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \input{sections/q1_q3_mech.tex}
 \input{sections/q4_electrostatic.tex}
 \input{sections/q5_q6.tex}

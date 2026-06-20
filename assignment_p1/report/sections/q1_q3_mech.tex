@@ -52,18 +52,28 @@ direction. With four beams in parallel,
 \end{equation}
 
 \paragraph{Effective mass.}
-Neglecting beam mass, the moving body comprises the modulation strip, the
-central mass and the comb fingers:
+\textcolor{blue}{Neglecting the beam mass, the moving body is the suspended
+silicon drawn in Fig.~\ref{fig:schematic}: the modulation bar, the central
+column, the comb-spine plate that carries the fingers (the lower ``mass''
+block) and the moving comb fingers. The geometry has \emph{two}
+$L\times W_{m}$ plates -- the modulation bar \emph{and} the comb spine -- and
+$20$ moving fingers, since $N=40$ counts the comb \emph{gaps}, not the
+fingers:}
 \begin{equation}
-  m \;=\; \rho_{Si}\,t\bigl(\,L\,W_{m} + L_{m}\,W_{m} + N\,L_{c}\,W_{c}\bigr)
-        \;=\; \SI{2.33e-12}{\kilo\gram}.
+  m \;=\; \rho_{Si}\,t\bigl(\,\textcolor{blue}{2}\,L\,W_{m} + L_{m}\,W_{m}
+        + \textcolor{blue}{20}\,L_{c}\,W_{c}\bigr)
+        \;=\; \textcolor{blue}{\SI{3.54e-12}{\kilo\gram}}.
 \end{equation}
+\textcolor{blue}{The first submission counted only one plate and $N=40$
+fingers, giving \SI{2.33e-12}{\kilo\gram}. Adding the missing comb spine and
+using the correct finger count raises the mass by $1.5\times$ and brings this
+analytical estimate close to the finite-element value of Part~2.}
 
 \paragraph{Resonance.}
 \begin{equation}
-  \omega_{0}=\sqrt{\frac{k}{m}}=\SI{4.16e6}{\radian\per\second},
+  \omega_{0}=\sqrt{\frac{k}{m}}=\textcolor{blue}{\SI{3.37e6}{\radian\per\second}},
   \qquad
-  f_{0}=\frac{\omega_{0}}{2\pi}\approx \SI{662}{\kilo\hertz}.
+  f_{0}=\frac{\omega_{0}}{2\pi}\approx \textcolor{blue}{\SI{537}{\kilo\hertz}}.
 \end{equation}
 
 \subsection*{Q3 -- Static deflection due to gravity}
@@ -71,9 +81,9 @@ central mass and the comb fingers:
 With gravity acting along the direction of motion, static balance gives
 \begin{equation}
   x_{g}=\frac{m\,g}{k}
-       =\frac{\SI{2.33e-12}{\kilo\gram}\cdot\SI{9.81}{\meter\per\second\squared}}
+       =\frac{\textcolor{blue}{\SI{3.54e-12}{\kilo\gram}}\cdot\SI{9.81}{\meter\per\second\squared}}
               {\SI{40.30}{\newton\per\meter}}
-       \approx \SI{0.57}{\pico\meter}.
+       \approx \textcolor{blue}{\SI{0.86}{\pico\meter}}.
 \end{equation}
-This is six orders of magnitude smaller than $g_{0}$. Gravity is irrelevant
-at this scale; the comb-drive force dominates by a wide margin.
+This is more than five orders of magnitude smaller than $g_{0}$. Gravity is
+irrelevant at this scale; the comb-drive force dominates by a wide margin.

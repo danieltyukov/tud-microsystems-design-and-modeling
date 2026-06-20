@@ -53,11 +53,13 @@ acceleration.
 
 \subsection*{Q6 -- Voltage-step response, 1 V and 50 V}
 
-The drive electrode receives a smoothed voltage step (rise time
-\SI{1}{\micro\second}, well below the \SI{2}{\micro\second} oscillation
-period but gentle enough for the coupled solid--electrostatics--moving-mesh
-integrator, which fails on nanosecond-scale steps). Rayleigh damping is the
-same as in Q3. Figure~\ref{fig:q6resp} shows both responses;
+The drive electrode receives a voltage step. \textcolor{blue}{The natural input
+is a true step -- zero for $t<0$, $\Vd$ for $t\ge0$ -- but a fully sharp step
+stalls the coupled solid--electrostatics--moving-mesh integrator at $t=0$, so a
+short smoothing (rise \SI{1}{\micro\second}, below the \SI{2}{\micro\second}
+period) is applied. Because the settling time is set by the envelope decay, the
+rise does not change it; it only rounds off the initial overshoot, as noted
+below.} Rayleigh damping is the same as in Q3. Figure~\ref{fig:q6resp} shows both responses;
 Fig.~\ref{fig:q6norm} overlays them with the Q3 force step, normalised to
 their final values.
 
@@ -65,32 +67,36 @@ their final values.
 \centering
 \includegraphics[width=\textwidth]{figures/q6_vstep_responses.png}
 \caption{Step responses for $\Vd$: $0\to\SI{1}{\volt}$ (left, picometre
-scale) and $0\to\SI{50}{\volt}$ (right, nanometre scale). Note the $2500:1$
-amplitude ratio for a $50:1$ voltage ratio.}
+scale) and $0\to\SI{50}{\volt}$ (right, nanometre scale), both settling in
+$\approx\SI{152}{\micro\second}$. \textcolor{blue}{The \SI{1}{\volt} trace is
+the resolved \SI{50}{\volt} response scaled by $1/2500$ (linearity), avoiding
+the numerical-dissipation artefact that corrupted the directly-integrated
+picometre run.} Note the $2500:1$ amplitude ratio for a $50:1$ voltage ratio.}
 \label{fig:q6resp}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/q6_vs_q3_normalized.png}
-\caption{Normalised comparison of the Q3 force step and the Q6 voltage
-steps. All three ring at $f_{1}$ and settle on the same time scale; the
-voltage steps overshoot less because of the \SI{1}{\micro\second} input
-rise.}
+\caption{Normalised comparison of the Q3 force step and the Q6
+\SI{50}{\volt} voltage step (the \SI{1}{\volt} response coincides with the
+\SI{50}{\volt} one once normalised, by linearity). Both ring at $f_{1}$ and
+settle on the same time scale; the voltage step overshoots less because of the
+\SI{1}{\micro\second} input rise.}
 \label{fig:q6norm}
 \end{figure}
 
 The comparison with Q3 comes down to three observations.
 
 First, the dynamics are identical. Both responses ring at
-$f_{1}=\SI{496}{\kilo\hertz}$ and the \SI{50}{\volt} step settles in about
-\SI{150}{\micro\second}, matching Q3's \SI{158}{\micro\second} within the
+$f_{1}=\SI{496}{\kilo\hertz}$ and the \SI{50}{\volt} step settles in
+\SI{152}{\micro\second}, matching Q3's \SI{158}{\micro\second} within the
 numerical accuracy of the coupled transient. At these voltages the device
-operates far below pull-in (\SI{222}{\volt}), so the electromechanical system
-is effectively linear and a voltage step acts exactly like a force step of
-size $F=\tfrac{1}{2}V^{2}\,dC/dx$. The bias softening measured in Q4b
-supports this: at \SI{50}{\volt} the mode-1 frequency shifts by only $-0.3$\%,
-invisible in the ringing.
+operates far below pull-in (\textcolor{blue}{\SI{224}{\volt}}), so the
+electromechanical system is effectively linear and a voltage step acts exactly
+like a force step of size $F=\tfrac{1}{2}V^{2}\,dC/dx$. The bias softening
+measured in Q4b supports this: at \SI{50}{\volt} the mode-1 frequency shifts by
+only $-0.3$\%, invisible in the ringing.
 
 Second, the input scaling is quadratic, and that is the real difference
 between the two experiments. Final values are \SI{-1.61}{\pico\meter} at
@@ -103,16 +109,21 @@ nonlinearity.
 
 Third, the overshoot is $1.62\times$ instead of Q3's $1.96\times$. This is
 the input, not the plant: the \SI{1}{\micro\second} rise filters the step.
-The same filtering appears identically in both Q6 traces.
+\textcolor{blue}{Shortening the rise well below the \SI{2}{\micro\second}
+period recovers the $\approx\!2\times$ overshoot of an ideal step, confirming
+the difference is purely input filtering and not the electromechanics.}
 
-One numerical remark. The \SI{50}{\volt} trace is quantitative (envelope
-decay within 7\% of $\zeta\omega_{1}$). The \SI{1}{\volt} response, at
-\SI{1.6}{\pico\meter}, sits below the integrator's effective absolute error
-floor, and its apparent decay is dominated by numerical dissipation even at a
-relative tolerance of $10^{-5}$ -- re-running with tighter settings did not
-change it. The waveform and final value are correct; the decay is not. Since
-the system is linear at these amplitudes, the physical \SI{1}{\volt}
-transient is the \SI{50}{\volt} trace scaled by $1/2500$, with the same
-settling time. Resolving picometre transients directly would need manual
-per-variable absolute tolerances, which is beyond what the comparison
-requires.
+\textcolor{blue}{The \SI{1}{\volt} response needs care to resolve directly. The
+first submission's \SI{1}{\volt} trace decayed in only \SI{75}{\micro\second}
+-- roughly half of what $Q\approx83$ allows -- which is unphysical: at
+\SI{1.6}{\pico\meter} it sits $2500\times$ below the well-resolved
+nanometre-scale \SI{50}{\volt} trace, so the generalised-$\alpha$ integrator's
+\emph{numerical} dissipation, not the Rayleigh damping, governed its apparent
+decay. Resolving it directly is the reviewer's relative-tolerance-$10^{-7}$
+route, helped by reduced algorithmic damping ($\rho_\infty\!\to\!1$) and a
+manual picometre-scale tolerance on the displacement. The physical answer,
+however, follows from linearity alone: far below pull-in the \SI{1}{\volt}
+transient is exactly the \SI{50}{\volt} trace scaled by $1/2500$, so it settles
+in the resolved \SI{50}{\volt} time, \SI{152}{\micro\second} -- the same as Q3
+-- not the \SI{75}{\micro\second} of the under-resolved run. The corrected
+\SI{1}{\volt} settling time is therefore \SI{152}{\micro\second}.}

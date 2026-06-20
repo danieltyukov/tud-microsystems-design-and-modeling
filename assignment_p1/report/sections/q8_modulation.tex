@@ -55,13 +55,13 @@ $S_{\phi}$ gives
   |H|_{f\to 0}     &= \frac{S_{\phi}\,\eta}{k}
                      \;\approx\; \SI{0.40}{\milli\radian\per\volt}, \\[2pt]
   |H|_{f=f_{0}}    &= \frac{S_{\phi}\,\eta\,Q}{k}
-                     \;\approx\; \SI{39}{\milli\radian\per\volt}
+                     \;\approx\; \textcolor{blue}{\SI{33}{\milli\radian\per\volt}}
                      \;=\; Q\cdot|H|_{f\to 0}, \\[2pt]
   \text{roll-off} &= -\SI{40}{\decibel\per\text{decade}}\quad
                      \text{(two-pole low-pass above } f_{0}\text{)}.
 \end{align}
 Fig.~\ref{fig:bode} shows the Bode plot. The magnitude is flat below $f_{0}$,
-peaks by $20\log_{10}Q\approx \SI{40}{\decibel}$ at the lightly damped
+peaks by $20\log_{10}Q\approx \textcolor{blue}{\SI{38}{\decibel}}$ at the lightly damped
 resonance, then rolls off at $-40$\,dB/dec.
 
 \begin{figure}[H]
@@ -69,8 +69,8 @@ resonance, then rolls off at $-40$\,dB/dec.
 \includegraphics[width=0.85\textwidth]{figures/q8_bode.pdf}
 \caption{Bode diagram of the small-signal transfer function
 $\Delta\phi(s)/V_{\!AC}(s)$ at $\VDC=\SI{10}{\volt}$. The peak at
-$f_{0}\approx\SI{662}{\kilo\hertz}$ exceeds the low-frequency value by a
-factor of $Q\approx 97$.}
+$f_{0}\approx\textcolor{blue}{\SI{537}{\kilo\hertz}}$ exceeds the low-frequency value by a
+factor of $Q\approx \textcolor{blue}{81}$.}
 \label{fig:bode}
 \end{figure}
 

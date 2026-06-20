@@ -15,3 +15,9 @@ assignment_p3/report/main.log
 assignment_p3/report/main.out
 combined_report/*.log
 combined_report/*.out
+
+# COMSOL JVM crash dumps
+assignment_p2/comsol/scripts/hs_err_pid*.log
+# LaTeX aux (part 1)
+assignment_p1/report/main.log
+assignment_p1/report/main.out

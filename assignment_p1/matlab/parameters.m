@@ -43,11 +43,19 @@ k_beam = 12 * Esi * I_beam / Lb^3;   % per beam, fixed-guided
 N_beams = 4;
 k = N_beams * k_beam;                % total stiffness
 
-% ----- Effective mass (top mass + central mass + comb fingers) -----
-m_top    = rho * L  * Wm * t;
-m_centre = rho * Lm * Wm * t;
-m_combs  = rho * N  * Lc * Wc * t;
-m = m_top + m_centre + m_combs;
+% ----- Effective mass -----
+%   Figure-faithful moving structure (corrects the first submission, which
+%   omitted the comb-spine plate and counted 40 fingers -> 2.33 pg):
+%     - modulation bar      L  x Wm  (top, near waveguide)
+%     - central column      Lm x Wm
+%     - comb-spine plate    L  x Wm  (the lower "Mass" block; was MISSING)
+%     - 20 moving fingers   Lc x Wc  (N=40 counts comb GAPS, not fingers)
+N_fingers = 20;                          % number of MOVING comb fingers (= N/2)
+m_bar    = rho * L  * Wm * t;            % top modulation bar
+m_centre = rho * Lm * Wm * t;            % central column
+m_spine  = rho * L  * Wm * t;            % comb-spine mass plate (added)
+m_combs  = rho * N_fingers * Lc * Wc * t;% moving comb fingers
+m = m_bar + m_centre + m_spine + m_combs;
 
 % ----- Resonance -----
 w0 = sqrt(k/m);
@@ -57,7 +65,7 @@ f0 = w0/(2*pi);
 dCdx = N * eps0 * t / h;             % [F/m] -- constant for ideal comb
 
 % ----- Damping coefficients -----
-Am = L*Wm + Lm*Wm + N*Lc*Wc;         % top-side moving area
+Am = 2*L*Wm + Lm*Wm + N_fingers*Lc*Wc;  % top-side moving area (two plates + 20 fingers)
 b_air  = cair * Am;
 b_clmp = sqrt(k*m) / Qclmp;
 b_tot  = b_air + b_clmp;
