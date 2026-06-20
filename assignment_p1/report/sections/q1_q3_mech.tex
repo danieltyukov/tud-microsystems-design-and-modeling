@@ -1,9 +1,9 @@
 \section{Mechanical model and dynamics}
 
-\subsection*{Q1 -- Lumped-element equation of motion}
+\subsection*{Q1: Lumped-element equation of motion}
 
 In vacuum and without damping, the suspended mass behaves as a single
-spring--mass with input force $\Fe$ and output displacement $\xm$:
+spring-mass with input force $\Fe$ and output displacement $\xm$:
 \begin{equation}
   m\,\ddot{\xm} + k\,\xm \;=\; \Fe.
   \label{eq:eom-undamped}
@@ -13,7 +13,7 @@ Once air damping and clamping losses are included (Q4) the equation extends to
   m\,\ddot{\xm} + b\,\dot{\xm} + k\,\xm \;=\; \Fe,
   \label{eq:eom-damped}
 \end{equation}
-which is the classical mass--spring--damper system, equivalent to a series RLC
+which is the classical mass-spring-damper system, equivalent to a series RLC
 circuit (Fig.~\ref{fig:rlc}).
 
 \begin{figure}[H]
@@ -27,17 +27,17 @@ circuit (Fig.~\ref{fig:rlc}).
     to[short] (9,0)
     to[short] (0,0);
 \end{circuitikz}
-\caption{Series-RLC equivalent circuit of the lumped mass--spring--damper
+\caption{Series-RLC equivalent circuit of the lumped mass-spring-damper
 system. Effort $\leftrightarrow$ voltage, flow $\leftrightarrow$ current.}
 \label{fig:rlc}
 \end{figure}
 
-\subsection*{Q2 -- Fundamental resonance frequency}
+\subsection*{Q2: Fundamental resonance frequency}
 
 \paragraph{Stiffness.}
 Each of the four beams is clamped at its anchor and connected to the rigid
 mass at the other end. By the symmetry of the upper/lower beam pair, the
-mass-side end translates without rotation -- a \emph{fixed--guided} boundary
+mass-side end translates without rotation, a \emph{fixed-guided} boundary
 condition. Each beam therefore contributes
 \begin{equation}
   k_{b} \;=\; \frac{12\,E_{Si}\,I}{L_{b}^{3}},
@@ -56,7 +56,7 @@ direction. With four beams in parallel,
 silicon drawn in Fig.~\ref{fig:schematic}: the modulation bar, the central
 column, the comb-spine plate that carries the fingers (the lower ``mass''
 block) and the moving comb fingers. The geometry has \emph{two}
-$L\times W_{m}$ plates -- the modulation bar \emph{and} the comb spine -- and
+$L\times W_{m}$ plates, the modulation bar \emph{and} the comb spine, and
 $20$ moving fingers, since $N=40$ counts the comb \emph{gaps}, not the
 fingers:}
 \begin{equation}
@@ -76,7 +76,7 @@ analytical estimate close to the finite-element value of Part~2.}
   f_{0}=\frac{\omega_{0}}{2\pi}\approx \textcolor{blue}{\SI{537}{\kilo\hertz}}.
 \end{equation}
 
-\subsection*{Q3 -- Static deflection due to gravity}
+\subsection*{Q3: Static deflection due to gravity}
 
 With gravity acting along the direction of motion, static balance gives
 \begin{equation}

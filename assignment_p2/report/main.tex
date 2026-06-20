@@ -36,7 +36,7 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small ET4260 -- Microsystems Design and Modelling}
+\fancyhead[L]{\small ET4260, Microsystems Design and Modelling}
 \fancyhead[R]{\small Final assignment, Part 2/3}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
@@ -51,7 +51,7 @@
 
 % ----- Title block -----
 \title{\vspace{-1.5cm}
-  \textbf{Final assignment -- Part 2/3} \\[2pt]
+  \textbf{Final assignment, Part 2/3} \\[2pt]
   \large Microsystems Design and Modelling (ET4260)}
 \author{Daniel Tyukov \\ Student number: 5714699}
 \date{First submission: 10\textsuperscript{th} June 2026}
@@ -120,7 +120,7 @@ $N$        & 40                      & number of comb-drive gaps\\
 $E_{Si}$   & \SI{170}{\giga\pascal}  & Young's modulus of silicon\\
 $\rho_{Si}$& \SI{2330}{\kilo\gram\per\cubic\meter} & density of silicon\\
 $\nu$      & 0.28                    & Poisson ratio (assumed)\\
-$Q$        & 83                      & quality factor imposed in Q3--Q6\\
+$Q$        & 83                      & quality factor imposed in Q3-Q6\\
 \bottomrule
 \end{tabularx}
 \end{table}
@@ -162,7 +162,7 @@ features are \SI{1}{\micro\meter}.}
 Table~\ref{tab:bc} lists every constraint and load used in the FEM studies
 and the geometric entity each one acts on. Two points set the character of
 all the results. First, the only mechanical constraint is a \emph{fixed
-constraint on the four beam outer-end edges} -- the anchor edges at
+constraint on the four beam outer-end edges}, the anchor edges at
 $x=\pm90~\si{\micro\meter}$ in Fig.~\ref{fig:mesh}; every other boundary is
 free. Second, the mechanical loads are \emph{distributed body loads over whole
 domains}, not point or central loads: the spring-constant and force-step

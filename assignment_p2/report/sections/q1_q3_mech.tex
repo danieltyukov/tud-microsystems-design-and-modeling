@@ -1,6 +1,6 @@
 \section{Mechanical model and dynamics}
 
-\subsection*{Q1 -- Spring constant from a stationary analysis}
+\subsection*{Q1: Spring constant from a stationary analysis}
 
 A \SI{1}{\micro\newton} test force is applied to the mass plate along the
 motion axis and the spring constant follows from $k=F/u_{y}$.
@@ -26,7 +26,7 @@ fine   & 44\,563 & 36.79\\
 \end{table}
 
 The FEM gives $k=\SI{36.8}{\newton\per\meter}$, 8.7\% below the Part~1
-estimate of \SI{40.30}{\newton\per\meter} from four fixed--guided beams,
+estimate of \SI{40.30}{\newton\per\meter} from four fixed-guided beams,
 \begin{equation}
   k_{\mathrm{P1}} = \frac{4E_{Si}\,t\,W_{b}^{3}}{L_{b}^{3}}.
 \end{equation}
@@ -37,16 +37,16 @@ analytical value. So the discrepancy splits into two parts: about 7.6\% is
 compliance of the plates and column, which the analytical model treats as
 rigid (the guided beam end rotates slightly when the ``rigid'' body deforms),
 and the remaining 1.1\% is shear deformation and 2D continuum effects that
-Euler--Bernoulli beam theory leaves out. With $W_{b}/L_{b}=1/15$ the beams
+Euler-Bernoulli beam theory leaves out. With $W_{b}/L_{b}=1/15$ the beams
 are slender, so a small shear contribution is consistent.
 
-\subsection*{Q2 -- Eigenfrequency analysis and mode shapes}
+\subsection*{Q2: Eigenfrequency analysis and mode shapes}
 
 Table~\ref{tab:q2modes} lists the first five eigenfrequencies;
 Fig.~\ref{fig:modes} shows the modal displacement maps. The fundamental mode
 at \SI{496.3}{\kilo\hertz} is the actuation mode: the shuttle translates
-along $y$ and the four beams take the S-shape of the fixed--guided boundary
-condition. Mode 2 is an in-plane rocking of the shuttle. Modes 3--5 sit
+along $y$ and the four beams take the S-shape of the fixed-guided boundary
+condition. Mode 2 is an in-plane rocking of the shuttle. Modes 3-5 sit
 within \SI{4}{\kilo\hertz} of each other and belong to the comb fingers: 20
 nearly identical \SI{20}{\micro\meter} cantilevers form a band of
 collective bending modes. A single-finger estimate,
@@ -82,7 +82,7 @@ The ratio is fully accounted for by the stiffness and mass corrections:
 \end{equation}
 Here $\meff = k/(2\pi f_{1})^{2} = \SI{3.79}{\pico\gram}$: the figure-true
 shuttle mass of \SI{3.54}{\pico\gram} plus about 36\% of the beam mass, close
-to the textbook fraction for a distributed fixed--guided beam.
+to the textbook fraction for a distributed fixed-guided beam.
 
 One limitation should be stated. A 2D in-plane model cannot show
 out-of-plane modes. The out-of-plane bending stiffness of the beams is
@@ -117,12 +117,12 @@ is outside the scope here, but a 3D design check would have to start with it.
   \caption{Mode 5, \SI{3311}{\kilo\hertz}.}
 \end{subfigure}
 \caption{Modal displacement maps of the first five modes (colour: total
-displacement, normalised per mode). Mode 1 is the actuation mode; modes 3--5
+displacement, normalised per mode). Mode 1 is the actuation mode; modes 3-5
 are collective comb-finger modes.}
 \label{fig:modes}
 \end{figure}
 
-\subsection*{Q3 -- Rayleigh damping and force-step response}
+\subsection*{Q3: Rayleigh damping and force-step response}
 
 The assignment asks for $Q=83$. Rayleigh damping gives a modal damping ratio
 \begin{equation}

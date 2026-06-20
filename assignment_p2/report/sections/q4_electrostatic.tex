@@ -21,7 +21,7 @@ fingers ($3W_{c}$) are visible at both edges of the comb.}
 \label{fig:pot}
 \end{figure}
 
-\subsection*{Q4a -- Displacement versus voltage, 0--150 V}
+\subsection*{Q4a: Displacement versus voltage, 0-150 V}
 
 A stationary study sweeps $\Vd$ from 0 to \SI{150}{\volt} in \SI{10}{\volt}
 steps, each solution continuing from the previous one.
@@ -57,10 +57,10 @@ The terminal capacitance supports the same picture: $C(0)=\SI{1.51}{\femto\farad
 against the parallel-plate value $N\epsilon_{0}d_{0}t/h=\SI{1.35}{\femto\farad}$
 (the 12\% excess is fringing), and $C$ rises with voltage as the comb engages
 deeper. The slow growth of the FEM/analytical ratio with voltage is the
-$1/g^{2}$ tip nonlinearity beginning to show -- the same mechanism that ends
+$1/g^{2}$ tip nonlinearity beginning to show: the same mechanism that ends
 in pull-in.
 
-\subsection*{Q4b -- Pull-in voltage}
+\subsection*{Q4b: Pull-in voltage}
 
 {\color{blue}%
 \paragraph{Why not a parametric sweep.}
@@ -70,7 +70,7 @@ noted, this last-converged voltage is \emph{not} a reliable measure of
 pull-in: it is set by where the Newton solver fails, which depends on the mesh
 and on the step size, not by a physical event. Away from the true fold the
 Jacobian is better conditioned, so a coarser mesh or a larger step often
-``converges'' further -- the number drifts with the numerics. Fig.~\ref{fig:q4bbranch}
+``converges'' further, and the number drifts with the numerics. Fig.~\ref{fig:q4bbranch}
 shows that branch only to make this point; the pull-in itself is obtained below
 with a proper, mesh-symmetry-independent method.}
 
@@ -85,15 +85,15 @@ value.}}
 \end{figure}
 
 {\color{blue}%
-\paragraph{Proper method -- prestressed eigenfrequencies.}
+\paragraph{Proper method, prestressed eigenfrequencies.}
 Pull-in is a loss of stability: at the critical voltage the effective stiffness
 of one mode vanishes. This is found cleanly with a prestressed eigenfrequency
-study -- a stationary solve at bias $\Vd$, then the eigenproblem linearised
+study, a stationary solve at bias $\Vd$, then the eigenproblem linearised
 about it, with the electrostatic softening entering through the
 electromechanical coupling. Each mode softens as
 $f^{2}(V)\approx f_{0}^{2}\,(1-V^{2}/V_{\mathrm{inst}}^{2})$, so $f^{2}$ plotted
 against $V^{2}$ is a straight line whose intercept is the instability voltage
-$V_{\mathrm{inst}}$ -- a robust extrapolation that needs no solver divergence.
+$V_{\mathrm{inst}}$, a robust extrapolation that needs no solver divergence.
 Following the reviewer's tip (and the teaching-team guidance to use a thickness
 of $1$ for the electrostatic studies, where $\SI{200}{\nano\meter}$ pulls in
 spurious fringing), the electrostatics out-of-plane thickness was set to $1$.
@@ -103,7 +103,7 @@ leaves the instability essentially unchanged.}
 
 {\color{blue}%
 Two modes matter (Fig.~\ref{fig:q4bsoft}). The \emph{axial} actuation mode
-barely softens -- $-9.6\%$ in frequency at \SI{220}{\volt} -- and its
+barely softens, $-9.6\%$ in frequency at \SI{220}{\volt}, and its
 $f^{2}\!\to\!0$ line lies well above the Part~1 value (near \SI{450}{\volt},
 though from only $-10\%$ softening this is a long, indicative extrapolation).
 This is the
@@ -114,7 +114,7 @@ collapses: \SI{2.54}{\mega\hertz} at rest to \SI{509}{\kilo\hertz} at
 \begin{equation}
   \boxed{\;V_{\mathrm{inst}}^{\mathrm{rock}} \approx \SI{224}{\volt}\;}
 \end{equation}
-the same value across every fit window -- a clean physical scaling, not a
+the same value across every fit window, a clean physical scaling, not a
 numerical accident. The device loses stability here, well before axial
 pull-in.}
 
@@ -138,7 +138,7 @@ finger sits midway between two \SI{1}{\micro\meter} gaps: laterally balanced,
 but with a negative electrostatic stiffness that grows as $V^{2}d_{0}/h^{3}$.
 The symmetric equilibrium remains a valid solution at every voltage; what
 happens at $V_{\mathrm{inst}}$ is that it becomes \emph{unstable} to an
-antisymmetric perturbation -- a small shuttle rotation swings every finger
+antisymmetric perturbation: a small shuttle rotation swings every finger
 toward one wall at once, on long moment arms (Fig.~\ref{fig:q4bmode}). A
 stationary continuation on a perfectly symmetric mesh stays on the symmetric
 branch and never falls into this mode; it is precisely numerical mesh asymmetry
@@ -151,8 +151,8 @@ the same across every fit window. Re-solving the softening on a finer mesh
 curve to within $0.5\%$ up to \SI{180}{\volt} and places the intercept at
 \SIrange{223}{225}{\volt}, against \SI{224}{\volt} on the coarse mesh: the
 instability is \emph{mesh-converged}, not a coarse-mesh artifact. So the
-reviewer's instinct -- that a symmetric model should not show net lateral
-displacement on the symmetric branch -- is correct; the lateral pull-in is
+reviewer's instinct, that a symmetric model should not show net lateral
+displacement on the symmetric branch, is correct; the lateral pull-in is
 nonetheless real, and the eigenvalue method is the right tool to see it.}
 
 \begin{figure}[H]
@@ -165,8 +165,8 @@ of the shuttle with all comb fingers deflecting sideways in unison.}
 
 {\color{blue}%
 \paragraph{Comparison with Part~1.}
-The FEM thus gives two numbers. The axial pull-in -- the only mechanism the
-single-DOF Part~1 model can represent -- sits above the Part~1 tip-gap estimate
+The FEM thus gives two numbers. The axial pull-in, the only mechanism the
+single-DOF Part~1 model can represent, sits above the Part~1 tip-gap estimate
 of \SI{347}{\volt}, so that 1-DOF picture is reasonable for the \emph{axial}
 mode. But the device never reaches it: it fails first by lateral rocking at
 $\approx\SI{224}{\volt}$, a mode the 1-DOF model cannot describe at all. The
@@ -178,9 +178,9 @@ beam spacing) or the fingers (shorter or wider), which Part~3 pursues.}
 \paragraph{Method note.}
 The assignment also suggests the displacement-controlled continuation from the
 COMSOL pull-in tutorial (a global equation solving for the voltage that holds a
-prescribed displacement). That setup was reproduced -- point probe in the
+prescribed displacement). That setup was reproduced (point probe in the
 material frame, baseline with the global equation disabled, segregated solver
-groups -- but COMSOL~6.4 fails to assemble freshly generated solver sequences
+groups), but COMSOL~6.4 fails to assemble freshly generated solver sequences
 for global equations that reference the displacement field (NaN in the
 moving-mesh residual); the same failure occurs on COMSOL's own tutorial file
 when its study is recreated, while the shipped solver sequence runs. The

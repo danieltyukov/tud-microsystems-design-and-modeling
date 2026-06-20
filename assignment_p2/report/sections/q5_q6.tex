@@ -1,6 +1,6 @@
 \section{Acceleration limit and voltage-step response}
 
-\subsection*{Q5 -- Maximum acceleration before mass--waveguide contact}
+\subsection*{Q5: Maximum acceleration before mass-waveguide contact}
 
 An acceleration $a$ along the motion axis loads every suspended part with a
 body force $\rho a$ per unit volume. Contact occurs when the modulation bar
@@ -51,11 +51,11 @@ Either way, the static shock tolerance is around $2\times10^{5}\,g$; as in
 Part~1, the practical concern is excitation near resonance, not static
 acceleration.
 
-\subsection*{Q6 -- Voltage-step response, 1 V and 50 V}
+\subsection*{Q6: Voltage-step response, 1 V and 50 V}
 
 The drive electrode receives a voltage step. \textcolor{blue}{The natural input
-is a true step -- zero for $t<0$, $\Vd$ for $t\ge0$ -- but a fully sharp step
-stalls the coupled solid--electrostatics--moving-mesh integrator at $t=0$, so a
+is a true step (zero for $t<0$, $\Vd$ for $t\ge0$), but a fully sharp step
+stalls the coupled solid-electrostatics-moving-mesh integrator at $t=0$, so a
 short smoothing (rise \SI{1}{\micro\second}, below the \SI{2}{\micro\second}
 period) is applied. Because the settling time is set by the envelope decay, the
 rise does not change it; it only rounds off the initial overshoot, as noted
@@ -100,7 +100,7 @@ only $-0.3$\%, invisible in the ringing.
 
 Second, the input scaling is quadratic, and that is the real difference
 between the two experiments. Final values are \SI{-1.61}{\pico\meter} at
-\SI{1}{\volt} and \SI{-3.97}{\nano\meter} at \SI{50}{\volt} -- a factor 2466
+\SI{1}{\volt} and \SI{-3.97}{\nano\meter} at \SI{50}{\volt}, a factor 2466
 for a factor 50 in voltage, against 2500 expected from $V^{2}$ (the static
 values from Q4a are reproduced to within 1.7\%). A force input scales
 linearly; a voltage input does not. For the phase-shifter application this
@@ -112,13 +112,12 @@ which the Q3 force step reaches ($1.98\times$). \textcolor{blue}{The
 \SI{50}{\volt} voltage step shows $1.62\times$, but a direct \SI{1}{\volt}
 re-run with the integrator's numerical dissipation reduced
 ($\rho_\infty\!\to\!1$) recovers $1.92\times$ at the \emph{same}
-\SI{1}{\micro\second} rise -- so the reduced overshoot is mostly
+\SI{1}{\micro\second} rise, so the reduced overshoot is mostly
 generalised-$\alpha$ numerical damping, not input filtering, and the underlying
 electromechanics is the same lightly-damped second-order system as Q3.}
 
 \textcolor{blue}{The \SI{1}{\volt} response needs care to resolve directly. The
-first submission's \SI{1}{\volt} trace decayed in only \SI{75}{\micro\second}
--- roughly half of what $Q\approx83$ allows -- because at \SI{1.6}{\pico\meter},
+first submission's \SI{1}{\volt} trace decayed in only \SI{75}{\micro\second}, roughly half of what $Q\approx83$ allows, because at \SI{1.6}{\pico\meter},
 $2500\times$ below the well-resolved \SI{50}{\volt} trace, the
 generalised-$\alpha$ integrator's \emph{numerical} dissipation, not the Rayleigh
 damping, governed the apparent decay. A direct re-run following the reviewer's
@@ -129,6 +128,6 @@ time itself is read from the well-resolved larger-amplitude response: at
 picometre scale the tail stays sensitive to residual numerical content, whereas
 far below pull-in the system is linear, so the \SI{1}{\volt} transient is the
 \SI{50}{\volt} trace scaled by $1/2500$ and settles in the same
-\SI{152}{\micro\second} -- matching Q3's \SI{158}{\micro\second} and the
+\SI{152}{\micro\second}, matching Q3's \SI{158}{\micro\second} and the
 analytic \SI{159}{\micro\second}, not the \SI{75}{\micro\second} of the
 under-resolved first run.}
